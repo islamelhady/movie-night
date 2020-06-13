@@ -14,8 +14,6 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            app:navigationIcon="@drawable/ic_navigate"
-            app:title="@string/app_name"
             app:titleTextColor="@color/cardview_light_background" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -24,5 +22,7 @@
         android:id="@+id/movies_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

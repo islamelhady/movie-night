@@ -120,6 +120,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 currentPage = page;
                 isFetchingMovies = false;
+
+                setTitle();
             }
 
             @Override
@@ -180,5 +182,19 @@ public class MainActivity extends AppCompatActivity {
         });
         sortMenu.inflate(R.menu.menu_movies_sort);
         sortMenu.show();
+    }
+
+    private void setTitle() {
+        switch (sortBy) {
+            case MoviesRepository.POPULAR:
+                setTitle(getString(R.string.popular));
+                break;
+            case MoviesRepository.TOP_RATED:
+                setTitle(getString(R.string.top_rated));
+                break;
+            case MoviesRepository.UPCOMING:
+                setTitle(getString(R.string.upcoming));
+                break;
+        }
     }
 }
