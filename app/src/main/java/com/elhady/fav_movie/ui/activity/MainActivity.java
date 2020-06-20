@@ -1,8 +1,10 @@
-package com.elhady.fav_movie;
+package com.elhady.fav_movie.ui.activity;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.elhady.fav_movie.R;
 
 public class MainActivity extends AppCompatActivity {
 
