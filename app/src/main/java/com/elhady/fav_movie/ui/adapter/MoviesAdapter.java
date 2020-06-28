@@ -1,5 +1,6 @@
 package com.elhady.fav_movie.ui.adapter;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,13 +9,22 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.elhady.fav_movie.R;
+import com.elhady.fav_movie.model.Genre;
 import com.elhady.fav_movie.model.Movie;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewHolder> {
 
+    private List<Genre> allGenres;
     private List<Movie> movies;
+
+    public MoviesAdapter(List<Movie> movies, List<Genre> allGenres) {
+        this.movies = movies;
+        this.allGenres = allGenres;
+    }
+
 
     public MoviesAdapter(List<Movie> movies) {
         this.movies = movies;
@@ -54,7 +64,20 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
             releaseDate.setText(movie.getReleaseDate().split("-")[0]);
             title.setText(movie.getTitle());
             rating.setText(String.valueOf(movie.getRating()));
-            genres.setText("");
+            genres.setText(getGenres(movie.getGenreIds()));
+        }
+
+        private String getGenres(List<Integer> genreIds) {
+            List<String> movieGenres = new ArrayList<>();
+            for (Integer genreId : genreIds) {
+                for (Genre genre : allGenres) {
+                    if (genre.getId() == genreId) {
+                        movieGenres.add(genre.getName());
+                        break;
+                    }
+                }
+            }
+            return TextUtils.join(", ", movieGenres);
         }
     }
 }
