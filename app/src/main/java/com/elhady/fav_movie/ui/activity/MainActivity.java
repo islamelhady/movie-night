@@ -19,11 +19,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RecyclerView moviesList;
-    private MoviesAdapter adapter;
-
-    private MoviesRepository moviesRepository;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
