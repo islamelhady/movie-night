@@ -77,13 +77,6 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
                     .into(poster);
         }
 
-        public void bind(Movie movie) {
-            releaseDate.setText(movie.getReleaseDate().split("-")[0]);
-            title.setText(movie.getTitle());
-            rating.setText(String.valueOf(movie.getRating()));
-            genres.setText(getGenres(movie.getGenreIds()));
-        }
-
         private String getGenres(List<Integer> genreIds) {
             List<String> movieGenres = new ArrayList<>();
             for (Integer genreId : genreIds) {
