@@ -20,6 +20,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MoviesRepository {
     private static final String BASE_URL = "https://api.themoviedb.org/3/";
     private static final String LANGUAGE = "en-US";
+    public static final String POPULAR = "popular";
+    public static final String TOP_RATED = "top_rated";
+    public static final String UPCOMING = "upcoming";
 
     private static MoviesRepository repository;
 
@@ -43,30 +46,27 @@ public class MoviesRepository {
     }
 
     //refactor getMovies(…) method to accept a page and pass the current page through the callback
-    public void getMovies(int page, final OnGetMoviesCallback callback) {
-        Log.d("MoviesRepository", "Next Page = " + page);
-        api.getPopularMovies("<YOUR_API_KEY_HERE>", LANGUAGE, page)
-                .enqueue(new Callback<MoviesResponse>() {
-                    @Override
-                    public void onResponse(@NonNull Call<MoviesResponse> call, @NonNull Response<MoviesResponse> response) {
-                        if (response.isSuccessful()) {
-                            MoviesResponse moviesResponse = response.body();
-                            if (moviesResponse != null && moviesResponse.getMovies() != null) {
-                                callback.onSuccess(moviesResponse.getPage(), moviesResponse.getMovies());
-                            } else {
-                                callback.onError();
-                            }
-                        } else {
-                            callback.onError();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<MoviesResponse> call, Throwable t) {
+    public void getMovies(int page, String sortBy, final OnGetMoviesCallback callback) {
+        Callback<MoviesResponse> call = new Callback<MoviesResponse>() {
+            @Override
+            public void onResponse(Call<MoviesResponse> call, Response<MoviesResponse> response) {
+                if (response.isSuccessful()) {
+                    MoviesResponse moviesResponse = response.body();
+                    if (moviesResponse != null && moviesResponse.getMovies() != null) {
+                        callback.onSuccess(moviesResponse.getPage(), moviesResponse.getMovies());
+                    } else {
                         callback.onError();
                     }
-                });
+                } else {
+                    callback.onError();
+                }
+            }
 
+            @Override
+            public void onFailure(Call<MoviesResponse> call, Throwable t) {
+                callback.onError();
+            }
+        };
 
         switch (sortBy) {
             case TOP_RATED:
@@ -84,6 +84,7 @@ public class MoviesRepository {
                 break;
         }
     }
+
 
     public void getGenres(final OnGetGenresCallback callback) {
         api.getGenres(BuildConfig.TMDB_API_KEY, LANGUAGE)
