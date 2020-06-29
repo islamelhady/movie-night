@@ -5,7 +5,8 @@ import com.elhady.fav_movie.model.Movie;
 import java.util.List;
 
 public interface OnGetMoviesCallback {
-    void onSuccess(List<Movie> movies);
+    //Refactor MoviesRepository.getMovies(…) to accept a page number (Pagination)
+    void onSuccess(int page, List<Movie> movies);
 
     void onError();
 }

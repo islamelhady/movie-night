@@ -97,4 +97,9 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
             return TextUtils.join(", ", movieGenres);
         }
     }
+
+    public void appendMovies(List<Movie> moviesToAppend) {
+        movies.addAll(moviesToAppend);
+        notifyDataSetChanged();
+    }
 }
