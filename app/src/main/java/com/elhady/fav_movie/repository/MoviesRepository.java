@@ -70,16 +70,16 @@ public class MoviesRepository {
 
         switch (sortBy) {
             case TOP_RATED:
-                api.getTopRatedMovies(BuildConfig.TMDB_API_KEY, LANGUAGE, page)
+                api.getTopRatedMovies("282157b63b2a2ef81abaca304a648cba", LANGUAGE, page)
                         .enqueue(call);
                 break;
             case UPCOMING:
-                api.getUpcomingMovies(BuildConfig.TMDB_API_KEY, LANGUAGE, page)
+                api.getUpcomingMovies("282157b63b2a2ef81abaca304a648cba", LANGUAGE, page)
                         .enqueue(call);
                 break;
             case POPULAR:
             default:
-                api.getPopularMovies(BuildConfig.TMDB_API_KEY, LANGUAGE, page)
+                api.getPopularMovies("282157b63b2a2ef81abaca304a648cba", LANGUAGE, page)
                         .enqueue(call);
                 break;
         }
@@ -87,7 +87,7 @@ public class MoviesRepository {
 
 
     public void getGenres(final OnGetGenresCallback callback) {
-        api.getGenres(BuildConfig.TMDB_API_KEY, LANGUAGE)
+        api.getGenres("282157b63b2a2ef81abaca304a648cba", LANGUAGE)
                 .enqueue(new Callback<GenresResponse>() {
                     @Override
                     public void onResponse(Call<GenresResponse> call, Response<GenresResponse> response) {
