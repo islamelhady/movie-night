@@ -8,6 +8,7 @@ import com.elhady.fav_movie.BuildConfig;
 import com.elhady.fav_movie.iterface.OnGetGenresCallback;
 import com.elhady.fav_movie.iterface.OnGetMoviesCallback;
 import com.elhady.fav_movie.iterface.TMDbApi;
+import com.elhady.fav_movie.model.Genre;
 import com.elhady.fav_movie.model.GenresResponse;
 import com.elhady.fav_movie.model.MoviesResponse;
 
@@ -23,6 +24,7 @@ public class MoviesRepository {
     public static final String POPULAR = "popular";
     public static final String TOP_RATED = "top_rated";
     public static final String UPCOMING = "upcoming";
+    public static final String API_KEY = "282157b63b2a2ef81abaca304a648cba";
 
     private static MoviesRepository repository;
 
@@ -70,16 +72,16 @@ public class MoviesRepository {
 
         switch (sortBy) {
             case TOP_RATED:
-                api.getTopRatedMovies("282157b63b2a2ef81abaca304a648cba", LANGUAGE, page)
+                api.getTopRatedMovies(API_KEY, LANGUAGE, page)
                         .enqueue(call);
                 break;
             case UPCOMING:
-                api.getUpcomingMovies("282157b63b2a2ef81abaca304a648cba", LANGUAGE, page)
+                api.getUpcomingMovies(API_KEY, LANGUAGE, page)
                         .enqueue(call);
                 break;
             case POPULAR:
             default:
-                api.getPopularMovies("282157b63b2a2ef81abaca304a648cba", LANGUAGE, page)
+                api.getPopularMovies(API_KEY, LANGUAGE, page)
                         .enqueue(call);
                 break;
         }
@@ -87,7 +89,7 @@ public class MoviesRepository {
 
 
     public void getGenres(final OnGetGenresCallback callback) {
-        api.getGenres("282157b63b2a2ef81abaca304a648cba", LANGUAGE)
+        api.getGenres(API_KEY, LANGUAGE)
                 .enqueue(new Callback<GenresResponse>() {
                     @Override
                     public void onResponse(Call<GenresResponse> call, Response<GenresResponse> response) {

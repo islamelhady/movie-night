@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.widget.Toolbar;
@@ -194,6 +195,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case MoviesRepository.UPCOMING:
                 setTitle(getString(R.string.upcoming));
+                break;
+            default:
+                setTitle(getString(R.string.popular));
                 break;
         }
     }
