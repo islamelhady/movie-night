@@ -1,15 +1,11 @@
 package com.elhady.fav_movie.repository;
 
-import android.util.Log;
-
-import androidx.annotation.NonNull;
-
-import com.elhady.fav_movie.BuildConfig;
 import com.elhady.fav_movie.iterface.OnGetGenresCallback;
+import com.elhady.fav_movie.iterface.OnGetMovieCallback;
 import com.elhady.fav_movie.iterface.OnGetMoviesCallback;
 import com.elhady.fav_movie.iterface.TMDbApi;
-import com.elhady.fav_movie.model.Genre;
 import com.elhady.fav_movie.model.GenresResponse;
+import com.elhady.fav_movie.model.Movie;
 import com.elhady.fav_movie.model.MoviesResponse;
 
 import retrofit2.Call;
@@ -107,6 +103,30 @@ public class MoviesRepository {
 
                     @Override
                     public void onFailure(Call<GenresResponse> call, Throwable t) {
+                        callback.onError();
+                    }
+                });
+    }
+
+    public void getMovie(int movieId, final OnGetMovieCallback callback) {
+        api.getMovie(movieId, API_KEY, LANGUAGE)
+                .enqueue(new Callback<Movie>() {
+                    @Override
+                    public void onResponse(Call<Movie> call, Response<Movie> response) {
+                        if (response.isSuccessful()) {
+                            Movie movie = response.body();
+                            if (movie != null) {
+                                callback.onSuccess(movie);
+                            } else {
+                                callback.onError();
+                            }
+                        } else {
+                            callback.onError();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Movie> call, Throwable t) {
                         callback.onError();
                     }
                 });
