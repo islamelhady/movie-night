@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.elhady.fav_movie.R;
+import com.elhady.fav_movie.iterface.OnMoviesClickCallback;
 import com.elhady.fav_movie.model.Genre;
 import com.elhady.fav_movie.model.Movie;
 
@@ -23,10 +24,12 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
 
     private List<Genre> allGenres;
     private List<Movie> movies;
+    private OnMoviesClickCallback callback;
 
-    public MoviesAdapter(List<Movie> movies, List<Genre> allGenres) {
+    public MoviesAdapter(List<Movie> movies, List<Genre> allGenres, OnMoviesClickCallback callback) {
         this.movies = movies;
         this.allGenres = allGenres;
+        this.callback = callback;
     }
 
 
@@ -56,6 +59,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
         TextView rating;
         TextView genres;
         ImageView poster;
+        Movie movie;
 
         public MovieViewHolder(View itemView) {
             super(itemView);
@@ -64,9 +68,17 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
             rating = itemView.findViewById(R.id.item_movie_rating);
             genres = itemView.findViewById(R.id.item_movie_genre);
             poster = itemView.findViewById(R.id.item_movie_poster);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    callback.onClick(movie);
+                }
+            });
         }
 
         public void bind(Movie movie) {
+            this.movie = movie;
             releaseDate.setText(movie.getReleaseDate().split("-")[0]);
             title.setText(movie.getTitle());
             rating.setText(String.valueOf(movie.getRating()));
