@@ -1,5 +1,6 @@
 package com.elhady.fav_movie.ui.activity;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.elhady.fav_movie.R;
 import com.elhady.fav_movie.iterface.OnGetGenresCallback;
 import com.elhady.fav_movie.iterface.OnGetMoviesCallback;
+import com.elhady.fav_movie.iterface.OnMoviesClickCallback;
 import com.elhady.fav_movie.model.Genre;
 import com.elhady.fav_movie.model.Movie;
 import com.elhady.fav_movie.repository.MoviesRepository;
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView moviesList;
     private List<Genre> movieGenres;
     private String sortBy = MoviesRepository.POPULAR;
+    //private OnMoviesClickCallback callback;
 
 
     /**
@@ -111,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(int page, List<Movie> movies) {
                 if (adapter == null) {
-                    adapter = new MoviesAdapter(movies, movieGenres);
+                    adapter = new MoviesAdapter(movies, movieGenres, callback);
                     moviesList.setAdapter(adapter);
                 } else {
                     if (page == 1) {
@@ -131,6 +134,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    OnMoviesClickCallback callback = new OnMoviesClickCallback() {
+        @Override
+        public void onClick(Movie movie) {
+            Intent intent = new Intent(MainActivity.this, MovieActivity.class);
+            intent.putExtra(MovieActivity.MOVIE_ID, movie.getId());
+            startActivity(intent);
+        }
+    };
 
     private void showError() {
         Toast.makeText(MainActivity.this, "Please check your internet connection.", Toast.LENGTH_SHORT).show();
