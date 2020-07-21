@@ -3,10 +3,12 @@ package com.elhady.fav_movie.repository;
 import com.elhady.fav_movie.iterface.OnGetGenresCallback;
 import com.elhady.fav_movie.iterface.OnGetMovieCallback;
 import com.elhady.fav_movie.iterface.OnGetMoviesCallback;
+import com.elhady.fav_movie.iterface.OnGetTrailersCallback;
 import com.elhady.fav_movie.iterface.TMDbApi;
 import com.elhady.fav_movie.model.GenresResponse;
 import com.elhady.fav_movie.model.Movie;
 import com.elhady.fav_movie.model.MoviesResponse;
+import com.elhady.fav_movie.model.TrailerResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -127,6 +129,30 @@ public class MoviesRepository {
 
                     @Override
                     public void onFailure(Call<Movie> call, Throwable t) {
+                        callback.onError();
+                    }
+                });
+    }
+
+    public void getTrailers(int movieId, final OnGetTrailersCallback callback) {
+        api.getTrailers(movieId, API_KEY, LANGUAGE)
+                .enqueue(new Callback<TrailerResponse>() {
+                    @Override
+                    public void onResponse(Call<TrailerResponse> call, Response<TrailerResponse> response) {
+                        if (response.isSuccessful()) {
+                            TrailerResponse trailerResponse = response.body();
+                            if (trailerResponse != null && trailerResponse.getTrailers() != null) {
+                                callback.onSuccess(trailerResponse.getTrailers());
+                            } else {
+                                callback.onError();
+                            }
+                        } else {
+                            callback.onError();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<TrailerResponse> call, Throwable t) {
                         callback.onError();
                     }
                 });
