@@ -3,6 +3,7 @@ package com.elhady.fav_movie.iterface;
 import com.elhady.fav_movie.model.GenresResponse;
 import com.elhady.fav_movie.model.Movie;
 import com.elhady.fav_movie.model.MoviesResponse;
+import com.elhady.fav_movie.model.ReviewResponse;
 import com.elhady.fav_movie.model.TrailerResponse;
 
 import retrofit2.Call;
@@ -41,5 +42,9 @@ public interface TMDbApi {
                                       @Query("api_key") String apiKEy,
                                       @Query("language") String language);
 
+    @GET("movie/{movie_id}/reviews")
+    Call<ReviewResponse> getReviews(@Path("movie_id") int id,
+                                    @Query("api_key") String apiKEy,
+                                    @Query("language") String language);
 
 }
