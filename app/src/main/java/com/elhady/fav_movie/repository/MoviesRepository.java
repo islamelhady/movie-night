@@ -3,11 +3,13 @@ package com.elhady.fav_movie.repository;
 import com.elhady.fav_movie.iterface.OnGetGenresCallback;
 import com.elhady.fav_movie.iterface.OnGetMovieCallback;
 import com.elhady.fav_movie.iterface.OnGetMoviesCallback;
+import com.elhady.fav_movie.iterface.OnGetReviewsCallback;
 import com.elhady.fav_movie.iterface.OnGetTrailersCallback;
 import com.elhady.fav_movie.iterface.TMDbApi;
 import com.elhady.fav_movie.model.GenresResponse;
 import com.elhady.fav_movie.model.Movie;
 import com.elhady.fav_movie.model.MoviesResponse;
+import com.elhady.fav_movie.model.ReviewResponse;
 import com.elhady.fav_movie.model.TrailerResponse;
 
 import retrofit2.Call;
@@ -153,6 +155,30 @@ public class MoviesRepository {
 
                     @Override
                     public void onFailure(Call<TrailerResponse> call, Throwable t) {
+                        callback.onError();
+                    }
+                });
+    }
+
+    public void getReviews(int movieId, final OnGetReviewsCallback callback) {
+        api.getReviews(movieId, API_KEY, LANGUAGE)
+                .enqueue(new Callback<ReviewResponse>() {
+                    @Override
+                    public void onResponse(Call<ReviewResponse> call, Response<ReviewResponse> response) {
+                        if (response.isSuccessful()) {
+                            ReviewResponse reviewResponse = response.body();
+                            if (reviewResponse != null && reviewResponse.getReviews() != null) {
+                                callback.onSuccess(reviewResponse.getReviews());
+                            } else {
+                                callback.onError();
+                            }
+                        } else {
+                            callback.onError();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ReviewResponse> call, Throwable t) {
                         callback.onError();
                     }
                 });
