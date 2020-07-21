@@ -1,5 +1,7 @@
 package com.elhady.fav_movie.ui.activity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -18,8 +20,10 @@ import com.bumptech.glide.request.RequestOptions;
 import com.elhady.fav_movie.R;
 import com.elhady.fav_movie.iterface.OnGetGenresCallback;
 import com.elhady.fav_movie.iterface.OnGetMovieCallback;
+import com.elhady.fav_movie.iterface.OnGetTrailersCallback;
 import com.elhady.fav_movie.model.Genre;
 import com.elhady.fav_movie.model.Movie;
+import com.elhady.fav_movie.model.Trailer;
 import com.elhady.fav_movie.repository.MoviesRepository;
 
 import java.util.ArrayList;
@@ -41,6 +45,7 @@ public class MovieActivity extends AppCompatActivity {
     private RatingBar movieRating;
     private LinearLayout movieTrailers;
     private LinearLayout movieReviews;
+    private TextView trailersLabel;
 
     private MoviesRepository moviesRepository;
     private int movieId;
@@ -81,6 +86,7 @@ public class MovieActivity extends AppCompatActivity {
         movieRating = findViewById(R.id.movieDetailsRating);
         movieTrailers = findViewById(R.id.movieTrailers);
         movieReviews = findViewById(R.id.movieReviews);
+        trailersLabel = findViewById(R.id.trailersLabel);
     }
 
     private void getMovie() {
@@ -100,6 +106,7 @@ public class MovieActivity extends AppCompatActivity {
                             .apply(RequestOptions.placeholderOf(R.color.colorPrimary))
                             .into(movieBackdrop);
                 }
+                getTrailers(movie);
             }
 
             @Override
@@ -127,6 +134,43 @@ public class MovieActivity extends AppCompatActivity {
                 showError();
             }
         });
+    }
+
+    private void getTrailers(Movie movie) {
+        moviesRepository.getTrailers(movie.getId(), new OnGetTrailersCallback() {
+            @Override
+            public void onSuccess(List<Trailer> trailers) {
+                trailersLabel.setVisibility(View.VISIBLE);
+                movieTrailers.removeAllViews();
+                for (final Trailer trailer : trailers) {
+                    View parent = getLayoutInflater().inflate(R.layout.thumbnail_trailer, movieTrailers, false);
+                    ImageView thumbnail = parent.findViewById(R.id.thumbnail);
+                    thumbnail.requestLayout();
+                    thumbnail.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            showTrailer(String.format(YOUTUBE_VIDEO_URL, trailer.getKey()));
+                        }
+                    });
+                    Glide.with(MovieActivity.this)
+                            .load(String.format(YOUTUBE_THUMBNAIL_URL, trailer.getKey()))
+                            .apply(RequestOptions.placeholderOf(R.color.colorPrimary).centerCrop())
+                            .into(thumbnail);
+                    movieTrailers.addView(parent);
+                }
+            }
+
+            @Override
+            public void onError() {
+                // Do nothing
+                trailersLabel.setVisibility(View.GONE);
+            }
+        });
+    }
+
+    private void showTrailer(String url) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(intent);
     }
 
     @Override
