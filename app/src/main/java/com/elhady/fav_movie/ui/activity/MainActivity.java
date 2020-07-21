@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -33,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView moviesList;
     private List<Genre> movieGenres;
     private String sortBy = MoviesRepository.POPULAR;
-    //private OnMoviesClickCallback callback;
 
 
     /**

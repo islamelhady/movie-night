@@ -20,9 +20,11 @@ import com.bumptech.glide.request.RequestOptions;
 import com.elhady.fav_movie.R;
 import com.elhady.fav_movie.iterface.OnGetGenresCallback;
 import com.elhady.fav_movie.iterface.OnGetMovieCallback;
+import com.elhady.fav_movie.iterface.OnGetReviewsCallback;
 import com.elhady.fav_movie.iterface.OnGetTrailersCallback;
 import com.elhady.fav_movie.model.Genre;
 import com.elhady.fav_movie.model.Movie;
+import com.elhady.fav_movie.model.Review;
 import com.elhady.fav_movie.model.Trailer;
 import com.elhady.fav_movie.repository.MoviesRepository;
 
@@ -46,6 +48,7 @@ public class MovieActivity extends AppCompatActivity {
     private LinearLayout movieTrailers;
     private LinearLayout movieReviews;
     private TextView trailersLabel;
+    private TextView reviewsLabel;
 
     private MoviesRepository moviesRepository;
     private int movieId;
@@ -87,6 +90,7 @@ public class MovieActivity extends AppCompatActivity {
         movieTrailers = findViewById(R.id.movieTrailers);
         movieReviews = findViewById(R.id.movieReviews);
         trailersLabel = findViewById(R.id.trailersLabel);
+        reviewsLabel = findViewById(R.id.reviewsLabel);
     }
 
     private void getMovie() {
@@ -107,6 +111,7 @@ public class MovieActivity extends AppCompatActivity {
                             .into(movieBackdrop);
                 }
                 getTrailers(movie);
+                getReviews(movie);
             }
 
             @Override
@@ -171,6 +176,29 @@ public class MovieActivity extends AppCompatActivity {
     private void showTrailer(String url) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         startActivity(intent);
+    }
+
+    private void getReviews(Movie movie) {
+        moviesRepository.getReviews(movie.getId(), new OnGetReviewsCallback() {
+            @Override
+            public void onSuccess(List<Review> reviews) {
+                reviewsLabel.setVisibility(View.VISIBLE);
+                movieReviews.removeAllViews();
+                for (Review review : reviews) {
+                    View parent = getLayoutInflater().inflate(R.layout.review, movieReviews, false);
+                    TextView author = parent.findViewById(R.id.reviewAuthor);
+                    TextView content = parent.findViewById(R.id.reviewContent);
+                    author.setText(review.getAuthor());
+                    content.setText(review.getContent());
+                    movieReviews.addView(parent);
+                }
+            }
+
+            @Override
+            public void onError() {
+                // Do nothing
+            }
+        });
     }
 
     @Override
