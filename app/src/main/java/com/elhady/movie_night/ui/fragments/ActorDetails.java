@@ -50,13 +50,13 @@ public class ActorDetails extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = ActorDetailsLayoutBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
+        viewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        viewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
         ActorDetailsArgs args = ActorDetailsArgs.fromBundle(getArguments());
         personID = args.getPersonId();

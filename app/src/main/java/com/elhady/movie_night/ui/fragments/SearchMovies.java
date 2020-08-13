@@ -41,6 +41,7 @@ public class SearchMovies extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = SearchMoviesLayoutBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
+        viewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         return view;
     }
 
@@ -49,7 +50,6 @@ public class SearchMovies extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         queryMap = new HashMap<>();
-        viewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
         queryMap.put("api_key", Constants.API_KEY);
         queryMap.put("query",queryText);

@@ -50,6 +50,7 @@ public class Home extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = HomeLayoutBinding.inflate(inflater, container, false);
+        viewModel = new ViewModelProvider(Home.this).get(HomeViewModel.class);
         View view = binding.getRoot();
         return view;
     }
@@ -58,7 +59,7 @@ public class Home extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        viewModel = new ViewModelProvider(Home.this).get(HomeViewModel.class);
+
 
 
         map.put("api_key", Constants.API_KEY);

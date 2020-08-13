@@ -63,6 +63,7 @@ public class MovieDetails extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = MovieDetailsLayoutBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
+        viewModel = new ViewModelProvider(MovieDetails.this).get(HomeViewModel.class);
         return view;
     }
 
@@ -70,7 +71,6 @@ public class MovieDetails extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        viewModel = new ViewModelProvider(MovieDetails.this).get(HomeViewModel.class);
         castList = new ArrayList<>();
         queryMap = new HashMap<>();
 

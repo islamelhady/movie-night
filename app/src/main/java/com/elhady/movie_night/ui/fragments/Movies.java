@@ -42,6 +42,7 @@ public class Movies extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = MoviesLayoutBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
+        viewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         return view;
     }
 
@@ -49,7 +50,6 @@ public class Movies extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         map = new HashMap<>();
-        viewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         MoviesArgs args = MoviesArgs.fromBundle(getArguments());
         moviesCategory = args.getMovieCategory();
 

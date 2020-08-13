@@ -33,6 +33,7 @@ public class Favorite extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FavoriteLayoutBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
+        viewModel = new ViewModelProvider(Favorite.this).get(FavoriteViewModel.class);
         return (view);
     }
 
@@ -40,7 +41,6 @@ public class Favorite extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        viewModel = new ViewModelProvider(Favorite.this).get(FavoriteViewModel.class);
 
         intiRecyclerView();
         observeData();
