@@ -1,7 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#212121</color>
-    <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">#FF1744</color>
-    <color name="white">#FFFFFF</color>
+    <color name="colorPrimary">#E91E63</color>
+    <color name="colorPrimaryDark">#C2185B</color>
+    <color name="colorAccent">#AA00FF</color>
+    <color name="white">#ffF</color>
+
+
+    <!-- Grey color -->
+    <color name="grey_300">#E0E0E0</color>
+    <color name="grey_400">#BDBDBD</color>
+    <color name="grey_600">#757575</color>
+
+    <!-- Yellow -->
+    <color name="yellow_100">#FFF9C4</color>
+    <color name="yellow_200">#FFF59D</color>
+    <color name="yellow_300">#FFF176</color>
+    <color name="yellow_500">#FFEB3B</color>
+    <color name="yellow_700">#FBC02D</color>
+    <color name="yellow_900">#F57F17</color>
+
+    <!-- Pink -->
+    <color name="pink_500">#E91E63</color>
+    <color name="pink_700">#C2185B</color>
+    <color name="pink_800">#AD1457</color>
+    <color name="pink_900">#880E4F</color>
+
+    <!-- Blue grey -->
+    <color name="blue_grey_600">#546E7A</color>
+    <color name="blue_grey_700">#455A64</color>
+    <color name="blue_grey_800">#37474F</color>
+    <color name="blue_grey_900">#263238</color>
 </resources>

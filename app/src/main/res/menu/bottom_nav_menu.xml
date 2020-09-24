@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/popular_shows"
+        android:icon="@drawable/ic_popular"
+        android:title="@string/title_popular" />
+
+    <item
+        android:id="@+id/top_rated_shows"
+        android:icon="@drawable/ic_top_rated"
+        android:title="@string/title_top_rated" />
+
+    <item
+        android:id="@+id/upcoming_shows"
+        android:icon="@drawable/ic_upcoming"
+        android:title="@string/title_upcoming" />
+
+    <item
+        android:id="@+id/favorite_shows"
+        android:icon="@drawable/ic_favorite"
+        android:title="@string/title_favorite" />
+
+</menu>

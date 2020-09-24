@@ -1,4 +1,4 @@
-package com.elhady.fav_movie.ui.activity;
+package com.elhady.fav_movie.ui;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -31,7 +31,7 @@ import com.elhady.fav_movie.repository.MoviesRepository;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MovieActivity extends AppCompatActivity {
+public class MovieDetailsActivity extends AppCompatActivity {
     public static String MOVIE_ID = "movie_id";
 
     private static String IMAGE_BASE_URL = "http://image.tmdb.org/t/p/w780";
@@ -105,7 +105,7 @@ public class MovieActivity extends AppCompatActivity {
                 getGenres(movie);
                 movieReleaseDate.setText(movie.getReleaseDate());
                 if (!isFinishing()) {
-                    Glide.with(MovieActivity.this)
+                    Glide.with(MovieDetailsActivity.this)
                             .load(IMAGE_BASE_URL + movie.getBackdrop())
                             .apply(RequestOptions.placeholderOf(R.color.colorPrimary))
                             .into(movieBackdrop);
@@ -157,7 +157,7 @@ public class MovieActivity extends AppCompatActivity {
                             showTrailer(String.format(YOUTUBE_VIDEO_URL, trailer.getKey()));
                         }
                     });
-                    Glide.with(MovieActivity.this)
+                    Glide.with(MovieDetailsActivity.this)
                             .load(String.format(YOUTUBE_THUMBNAIL_URL, trailer.getKey()))
                             .apply(RequestOptions.placeholderOf(R.color.colorPrimary).centerCrop())
                             .into(thumbnail);
@@ -208,6 +208,6 @@ public class MovieActivity extends AppCompatActivity {
     }
 
     private void showError() {
-        Toast.makeText(MovieActivity.this, "Please check your internet connection.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(MovieDetailsActivity.this, "Please check your internet connection.", Toast.LENGTH_SHORT).show();
     }
 }

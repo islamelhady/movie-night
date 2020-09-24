@@ -1,4 +1,4 @@
-package com.elhady.fav_movie.ui.adapter;
+package com.elhady.fav_movie.adapter;
 
 import android.text.TextUtils;
 import android.view.LayoutInflater;
