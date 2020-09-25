@@ -12,6 +12,12 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface TMDbApi {
+
+    @GET("movie/{sort}")
+    Call<MoviesResponse> getMovies(@Path("sort") String sortBy,
+                                   @Query("page") int page,
+                                   @Query("api_key") String apiKey);
+
     @GET("movie/popular")
     Call<MoviesResponse> getPopularMovies(@Query("api_key") String apiKey,
                                           @Query("language") String language,

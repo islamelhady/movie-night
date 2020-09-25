@@ -56,7 +56,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movie);
+        setContentView(R.layout.activity_details_movie);
 
         movieId = getIntent().getIntExtra(MOVIE_ID, movieId);
 

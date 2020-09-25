@@ -1,12 +1,18 @@
 package com.elhady.filme.model;
 
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+@Entity(tableName = "movie_table")
 public class Movie {
 
+    @PrimaryKey(autoGenerate = true)
     @SerializedName("id")
     @Expose
     private int id;
@@ -29,6 +35,7 @@ public class Movie {
 
     @SerializedName("genre_ids")
     @Expose
+    @Ignore
     private List<Integer> genreIds;
 
     @SerializedName("overview")
@@ -65,7 +72,7 @@ public class Movie {
 
     @SerializedName("genres")
     @Expose
-
+    @Ignore
     private List<Genre> genres;
 
     public int getId() {
