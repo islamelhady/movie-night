@@ -1,6 +1,8 @@
 package com.elhady.filme.ui;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
@@ -14,6 +16,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 public class MainBottomActivity extends AppCompatActivity implements
@@ -26,13 +30,9 @@ public class MainBottomActivity extends AppCompatActivity implements
         BottomNavigationView navView = findViewById(R.id.bottom_navigation_view);
         FrameLayout frameLayout = findViewById(R.id.frame_container);
 
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //getSupportActionBar().setTitle("filme");
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setTitle("Tv Shows");
 
         changeFragment(0);
 
@@ -80,5 +80,37 @@ public class MainBottomActivity extends AppCompatActivity implements
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.frame_container, fragment)
                 .commit();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+
+        MenuItem searchViewItem = menu.findItem(R.id.app_bar_search);
+        MenuItem settings = menu.findItem(R.id.setting);
+
+        final SearchView searchView = (SearchView) searchViewItem.getActionView();
+        searchView.setQueryHint(getResources().getString(R.string.search_for_movies));
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
     }
 }

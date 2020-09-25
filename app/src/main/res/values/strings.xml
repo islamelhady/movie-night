@@ -10,4 +10,6 @@
     <string name="title_top_rated">Top Rated</string>
     <string name="title_upcoming">Upcoming</string>
     <string name="title_favorite">Favorite</string>
+    <string name="search_for_movies">Search for Movies</string>
+    <string name="settings">Settings</string>
 </resources>
