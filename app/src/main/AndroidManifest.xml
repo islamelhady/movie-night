@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.elhady.filme.ui.MainBottomActivity"
+            android:name="com.elhady.filme.ui.activities.MainBottomActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -22,12 +22,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.elhady.filme.ui.MovieDetailsActivity"
-            android:parentActivityName="com.elhady.filme.ui.MainBottomActivity"
+            android:name="com.elhady.filme.ui.activities.MovieDetailsActivity"
+            android:parentActivityName="com.elhady.filme.ui.activities.MainBottomActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.elhady.filme.ui.MainBottomActivity" />
+                android:value="com.elhady.filme.ui.activities.MainBottomActivity" />
         </activity>
     </application>
 

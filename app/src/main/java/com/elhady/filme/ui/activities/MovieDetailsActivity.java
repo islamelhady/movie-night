@@ -1,4 +1,4 @@
-package com.elhady.filme.ui;
+package com.elhady.filme.ui.activities;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -18,10 +18,10 @@ import androidx.appcompat.widget.Toolbar;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.elhady.filme.R;
-import com.elhady.filme.iterface.OnGetGenresCallback;
-import com.elhady.filme.iterface.OnGetMovieCallback;
-import com.elhady.filme.iterface.OnGetReviewsCallback;
-import com.elhady.filme.iterface.OnGetTrailersCallback;
+import com.elhady.filme.interfaces.OnGetGenresCallback;
+import com.elhady.filme.interfaces.OnGetMovieCallback;
+import com.elhady.filme.interfaces.OnGetReviewsCallback;
+import com.elhady.filme.interfaces.OnGetTrailersCallback;
 import com.elhady.filme.model.Genre;
 import com.elhady.filme.model.Movie;
 import com.elhady.filme.model.Review;

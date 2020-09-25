@@ -1,4 +1,4 @@
-package com.elhady.filme.fragment.ui.favorite;
+package com.elhady.filme.ui.fragments.favorite;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

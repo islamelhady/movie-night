@@ -1,4 +1,4 @@
-package com.elhady.filme.fragment.ui.toprated;
+package com.elhady.filme.ui.fragments.toprated;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,13 +13,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.elhady.filme.R;
-import com.elhady.filme.iterface.OnGetGenresCallback;
-import com.elhady.filme.iterface.OnGetMoviesCallback;
-import com.elhady.filme.iterface.OnMoviesClickCallback;
+import com.elhady.filme.interfaces.OnGetGenresCallback;
+import com.elhady.filme.interfaces.OnGetMoviesCallback;
+import com.elhady.filme.interfaces.OnMoviesClickCallback;
 import com.elhady.filme.model.Genre;
 import com.elhady.filme.model.Movie;
 import com.elhady.filme.repository.MoviesRepository;
-import com.elhady.filme.ui.MovieDetailsActivity;
+import com.elhady.filme.ui.activities.MovieDetailsActivity;
 import com.elhady.filme.adapter.MoviesAdapter;
 
 import java.util.List;

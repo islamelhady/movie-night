@@ -1,11 +1,11 @@
 package com.elhady.filme.repository;
 
-import com.elhady.filme.iterface.OnGetGenresCallback;
-import com.elhady.filme.iterface.OnGetMovieCallback;
-import com.elhady.filme.iterface.OnGetMoviesCallback;
-import com.elhady.filme.iterface.OnGetReviewsCallback;
-import com.elhady.filme.iterface.OnGetTrailersCallback;
-import com.elhady.filme.iterface.TMDbApi;
+import com.elhady.filme.interfaces.OnGetGenresCallback;
+import com.elhady.filme.interfaces.OnGetMovieCallback;
+import com.elhady.filme.interfaces.OnGetMoviesCallback;
+import com.elhady.filme.interfaces.OnGetReviewsCallback;
+import com.elhady.filme.interfaces.OnGetTrailersCallback;
+import com.elhady.filme.interfaces.TMDbApi;
 import com.elhady.filme.model.GenresResponse;
 import com.elhady.filme.model.Movie;
 import com.elhady.filme.model.MoviesResponse;

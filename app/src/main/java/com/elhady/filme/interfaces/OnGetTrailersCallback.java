@@ -1,4 +1,4 @@
-package com.elhady.filme.iterface;
+package com.elhady.filme.interfaces;
 
 import com.elhady.filme.model.Trailer;
 

@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.elhady.filme.R;
-import com.elhady.filme.iterface.OnMoviesClickCallback;
+import com.elhady.filme.interfaces.OnMoviesClickCallback;
 import com.elhady.filme.model.Genre;
 import com.elhady.filme.model.Movie;
 

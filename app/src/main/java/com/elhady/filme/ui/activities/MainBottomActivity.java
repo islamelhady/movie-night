@@ -1,4 +1,4 @@
-package com.elhady.filme.ui;
+package com.elhady.filme.ui.activities;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,10 +8,10 @@ import android.widget.FrameLayout;
 
 import com.elhady.filme.R;
 
-import com.elhady.filme.fragment.ui.upcoming.UpcomingFragment;
-import com.elhady.filme.fragment.ui.toprated.TopRatedShowFragment;
-import com.elhady.filme.fragment.ui.popshow.PopularShowFragment;
-import com.elhady.filme.fragment.ui.favorite.FavoriteShowFragment;
+import com.elhady.filme.ui.fragments.upcoming.UpcomingFragment;
+import com.elhady.filme.ui.fragments.toprated.TopRatedShowFragment;
+import com.elhady.filme.ui.fragments.popshow.PopularShowFragment;
+import com.elhady.filme.ui.fragments.favorite.FavoriteShowFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
