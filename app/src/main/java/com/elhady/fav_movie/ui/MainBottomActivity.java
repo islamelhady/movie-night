@@ -1,4 +1,4 @@
-package com.elhady.fav_movie.ui.activities;
+package com.elhady.fav_movie.ui;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,10 +8,9 @@ import android.widget.FrameLayout;
 
 import com.elhady.fav_movie.R;
 
-import com.elhady.fav_movie.ui.fragments.upcoming.UpcomingFragment;
-import com.elhady.fav_movie.ui.fragments.toprated.TopRatedShowFragment;
-import com.elhady.fav_movie.ui.fragments.popshow.PopularShowFragment;
-import com.elhady.fav_movie.ui.fragments.favorite.FavoriteShowFragment;
+import com.elhady.fav_movie.ui.fragments.SearchMovies;
+import com.elhady.fav_movie.ui.fragments.Home;
+import com.elhady.fav_movie.ui.fragments.Favorite;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
@@ -45,17 +44,14 @@ public class MainBottomActivity extends AppCompatActivity implements
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int itemId = item.getItemId();
         switch (itemId) {
-            case R.id.popular_shows:
+            case R.id.home_movie:
                 changeFragment(0);
                 return true;
-            case R.id.top_rated_shows:
+            case R.id.favorite_movie:
                 changeFragment(1);
                 return true;
-            case R.id.upcoming_shows:
+            case R.id.search_movie:
                 changeFragment(2);
-                return true;
-            case R.id.favorite_shows:
-                changeFragment(3);
                 return true;
         }
         return false;
@@ -65,16 +61,13 @@ public class MainBottomActivity extends AppCompatActivity implements
         Fragment fragment = null;
         switch (position) {
             case 0:
-                fragment = new PopularShowFragment();
+                fragment = new Home();
                 break;
             case 1:
-                fragment = new TopRatedShowFragment();
+                fragment = new Favorite();
                 break;
             case 2:
-                fragment = new UpcomingFragment();
-                break;
-            case 3:
-                fragment = new FavoriteShowFragment();
+                fragment = new SearchMovies();
                 break;
         }
         getSupportFragmentManager().beginTransaction()
