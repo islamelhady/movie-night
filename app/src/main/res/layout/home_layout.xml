@@ -1,125 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <androidx.core.widget.NestedScrollView
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:background="#323333"
+
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#fff"
-                android:textSize="22dp"
-                android:textStyle="bold"
-                android:text="Currently Showing"
-                android:layout_alignParentLeft="true"
-                android:layout_margin="10dp"
-                android:id="@+id/currentlyShowing"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="View All"
-                android:textColor="#fff"
-                android:id="@+id/viewAllCurrent"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="15dp" />
 
-            <androidx.viewpager2.widget.ViewPager2
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_below="@+id/currentlyShowing"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:id="@+id/currentlyShowingViewPager"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#fff"
-                android:textSize="22dp"
-                android:textStyle="bold"
-                android:text="Upcoming movies "
-                android:layout_below="@id/currentlyShowingViewPager"
-                android:layout_margin="10dp"
-                android:id="@+id/upcomingShowing"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="View All"
-                android:id="@+id/viewAllUpcoming"
-                android:textColor="#fff"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_below="@+id/currentlyShowingViewPager"
-                />
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/upcomingShowing"
-                android:layout_margin="5dp"
-                android:id="@+id/upcomingRecyclerView"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#fff"
-                android:textSize="22dp"
-                android:textStyle="bold"
-                android:text="Popular movies "
-                android:layout_below="@id/upcomingRecyclerView"
-                android:layout_margin="10dp"
-                android:id="@+id/popular"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="View All"
-                android:textColor="#fff"
-                android:id="@+id/viewAllPopular"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_below="@+id/upcomingRecyclerView"
-                />
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/popular"
-                android:layout_margin="5dp"
-                android:id="@+id/popularRecyclerView"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#fff"
-                android:textSize="22dp"
-                android:textStyle="bold"
-                android:text="Top-rated movies"
-                android:layout_below="@id/popularRecyclerView"
-                android:layout_margin="10dp"
-                android:id="@+id/topRated"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="View All"
-                android:textColor="#fff"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="15dp"
-                android:id="@+id/viewAllTopRated"
-                android:layout_below="@+id/popularRecyclerView"
-                />
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/topRated"
-                android:layout_margin="5dp"
-                android:id="@+id/topRatedRecyclerView"/>
+                android:layout_height="match_parent"
+                android:background="#323333">
 
-        </RelativeLayout>
-    </androidx.core.widget.NestedScrollView>
-</RelativeLayout>
+                <TextView
+                    android:id="@+id/currentlyShowing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_margin="10dp"
+                    android:text="Currently Showing"
+                    android:textColor="#fff"
+                    android:textSize="22dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/viewAllCurrent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="15dp"
+                    android:text="View All"
+                    android:textColor="#fff" />
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/currentlyShowingViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_below="@+id/currentlyShowing"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp" />
+
+                <TextView
+                    android:id="@+id/upcomingShowing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/currentlyShowingViewPager"
+                    android:layout_margin="10dp"
+                    android:text="Upcoming movies "
+                    android:textColor="#fff"
+                    android:textSize="22dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/viewAllUpcoming"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/currentlyShowingViewPager"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="15dp"
+                    android:text="View All"
+                    android:textColor="#fff" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/upcomingRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/upcomingShowing"
+                    android:layout_margin="5dp" />
+
+                <TextView
+                    android:id="@+id/popular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/upcomingRecyclerView"
+                    android:layout_margin="10dp"
+                    android:text="Popular movies "
+                    android:textColor="#fff"
+                    android:textSize="22dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/viewAllPopular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/upcomingRecyclerView"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="15dp"
+                    android:text="View All"
+                    android:textColor="#fff" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/popularRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/popular"
+                    android:layout_margin="5dp" />
+
+                <TextView
+                    android:id="@+id/topRated"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/popularRecyclerView"
+                    android:layout_margin="10dp"
+                    android:text="Top-rated movies"
+                    android:textColor="#fff"
+                    android:textSize="22dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/viewAllTopRated"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/popularRecyclerView"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="15dp"
+                    android:text="View All"
+                    android:textColor="#fff" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/topRatedRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/topRated"
+                    android:layout_margin="5dp" />
+
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+    </RelativeLayout>
+</layout>
