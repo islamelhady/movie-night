@@ -18,6 +18,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.elhady.filme.R;
+import com.elhady.filme.database.MovieRoomViewModel;
 import com.elhady.filme.interfaces.OnGetGenresCallback;
 import com.elhady.filme.interfaces.OnGetMovieCallback;
 import com.elhady.filme.interfaces.OnGetReviewsCallback;
@@ -27,6 +28,7 @@ import com.elhady.filme.model.Movie;
 import com.elhady.filme.model.Review;
 import com.elhady.filme.model.Trailer;
 import com.elhady.filme.repository.MoviesRepository;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
