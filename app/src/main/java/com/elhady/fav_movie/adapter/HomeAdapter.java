@@ -1,10 +1,12 @@
 package com.elhady.fav_movie.adapter;
 
 import android.content.Context;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -38,8 +40,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
         return new HomeViewHolder(binding);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onBindViewHolder(@NonNull HomeViewHolder holder, int position) {
+        holder.binding.movieItemRelativeLayout.setClipToOutline(true);
         holder.binding.movieItemName.setText(moviesList.get(position).getTitle());
         holder.binding.movieItemVotes.setText(moviesList.get(position).getVote_count()+"");
 
@@ -49,7 +53,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
 
     @Override
     public int getItemCount() {
-        return 0;
+        return moviesList == null ? 0 : moviesList.size();
     }
 
     class HomeViewHolder extends RecyclerView.ViewHolder {

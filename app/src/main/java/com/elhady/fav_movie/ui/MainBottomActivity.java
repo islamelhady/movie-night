@@ -19,6 +19,9 @@ import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class MainBottomActivity extends AppCompatActivity implements
         BottomNavigationView.OnNavigationItemSelectedListener{
 
@@ -28,10 +31,6 @@ public class MainBottomActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_bottom_main);
         BottomNavigationView navView = findViewById(R.id.bottom_navigation_view);
         FrameLayout frameLayout = findViewById(R.id.frame_container);
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
 
         changeFragment(0);
 
@@ -75,35 +74,4 @@ public class MainBottomActivity extends AppCompatActivity implements
                 .commit();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_main, menu);
-
-        MenuItem searchViewItem = menu.findItem(R.id.app_bar_search);
-        MenuItem settings = menu.findItem(R.id.setting);
-
-        final SearchView searchView = (SearchView) searchViewItem.getActionView();
-        searchView.setQueryHint(getResources().getString(R.string.search_for_movies));
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
-            }
-        });
-
-        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
-            @Override
-            public boolean onClose() {
-                return false;
-            }
-        });
-        return super.onCreateOptionsMenu(menu);
-    }
 }

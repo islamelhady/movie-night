@@ -12,7 +12,7 @@ import io.reactivex.rxjava3.core.Observable;
 public class Repository {
     public static final String TAG = "Repository";
 
-    private MovieApiService movieApiService;
+    MovieApiService movieApiService;
 
     @Inject
     public Repository(MovieApiService movieApiService) {

@@ -4,17 +4,16 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <RelativeLayout
-                xmlns:android="http://schemas.android.com/apk/res/android"
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#323333">
+                android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/currentlyShowing"
@@ -35,7 +34,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginRight="15dp"
                     android:text="View All"
-                    android:textColor="#fff" />
+                    android:textColor="@color/colorPrimary" />
 
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/currentlyShowingViewPager"
@@ -65,7 +64,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginRight="15dp"
                     android:text="View All"
-                    android:textColor="#fff" />
+                    android:textColor="@color/colorPrimary" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/upcomingRecyclerView"
@@ -94,7 +93,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginRight="15dp"
                     android:text="View All"
-                    android:textColor="#fff" />
+                    android:textColor="@color/colorPrimary"/>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/popularRecyclerView"
@@ -123,7 +122,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginRight="15dp"
                     android:text="View All"
-                    android:textColor="#fff" />
+                    android:textColor="@color/colorPrimary" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/topRatedRecyclerView"
