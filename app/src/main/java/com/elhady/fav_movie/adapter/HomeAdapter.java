@@ -19,12 +19,12 @@ import java.util.ArrayList;
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder> {
 
     private HomeItemBinding binding;
-    private ArrayList<Movie> moviesList;
     private Context context;
+    private ArrayList<Movie> moviesList;
 
-    public HomeAdapter(ArrayList<Movie> moviesList, Context context) {
-        this.moviesList = moviesList;
+    public HomeAdapter(Context context, ArrayList<Movie> moviesList) {
         this.context = context;
+        this.moviesList = moviesList;
     }
 
     public void setMoviesList(ArrayList<Movie> moviesList) {

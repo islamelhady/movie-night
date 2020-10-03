@@ -89,15 +89,15 @@ public class Home extends Fragment {
 
     private void setUpRecyclerViewsAndViewPager() {
         binding.upcomingRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL,false));
-        upcomingAdapter = new HomeAdapter(upcomingMovies,getContext());
+        upcomingAdapter = new HomeAdapter(getContext(),upcomingMovies);
         binding.upcomingRecyclerView.setAdapter(upcomingAdapter);
 
         binding.topRatedRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL,false));
-        topRatedAdapter = new HomeAdapter(topRatedMovies,getContext());
+        topRatedAdapter = new HomeAdapter(getContext(),topRatedMovies);
         binding.topRatedRecyclerView.setAdapter(topRatedAdapter);
 
         binding.popularRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL,false));
-        popularAdapter = new HomeAdapter(popularMovies,getContext());
+        popularAdapter = new HomeAdapter(getContext(),popularMovies);
         binding.popularRecyclerView.setAdapter(popularAdapter);
     }
 }
