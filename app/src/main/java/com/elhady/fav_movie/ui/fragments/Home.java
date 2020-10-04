@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.elhady.fav_movie.Utils.Constants;
 import com.elhady.fav_movie.adapter.HomeAdapter;
+import com.elhady.fav_movie.adapter.ViewPagerAdapter;
 import com.elhady.fav_movie.databinding.HomeLayoutBinding;
 import com.elhady.fav_movie.model.Movie;
 import com.elhady.fav_movie.viewmodel.HomeViewModel;
@@ -30,7 +31,8 @@ public class Home extends Fragment {
     private static final String TAG = "Home";
     private HomeViewModel viewModel;
     private HomeLayoutBinding binding;
-    private ArrayList<Movie> currentMovies, popularMovies, topRatedMovies, upcomingMovies;
+    private ArrayList<Movie>  currentMovies,popularMovies, topRatedMovies, upcomingMovies;
+    private ViewPagerAdapter currentMoviesAdapter;
     private HomeAdapter upcomingAdapter,popularAdapter,topRatedAdapter;
     private HashMap<String, String> map = new HashMap<>();
 
@@ -48,23 +50,25 @@ public class Home extends Fragment {
 
         viewModel = new ViewModelProvider(Home.this).get(HomeViewModel.class);
 
-        upcomingMovies = new ArrayList<>();
+//        upcomingMovies = new ArrayList<>();
 
         map.put("api_key", Constants.API_KEY);
         map.put("page","1");
 
         observeData();
-
-
-        viewModel.getUpcomingMovies(map);
-        viewModel.getTopRatedMovies(map);
-        viewModel.getPopularMovies(map);
-
+        getMoviesList();
         setUpRecyclerViewsAndViewPager();
     }
 
 
     private void observeData() {
+        viewModel.getCurrentlyShowingList().observe(getViewLifecycleOwner(), new Observer<ArrayList<Movie>>() {
+            @Override
+            public void onChanged(ArrayList<Movie> movies) {
+                currentMoviesAdapter.setMovieListResults(movies);
+            }
+        });
+
         viewModel.getUpcomingMoviesList().observe(getViewLifecycleOwner(), new Observer<ArrayList<Movie>>() {
             @Override
             public void onChanged(ArrayList<Movie> movies) {
@@ -87,7 +91,17 @@ public class Home extends Fragment {
         });
     }
 
+    private void getMoviesList() {
+        viewModel.getCurrentlyShowingMovies(map);
+        viewModel.getUpcomingMovies(map);
+        viewModel.getTopRatedMovies(map);
+        viewModel.getPopularMovies(map);
+    }
+
     private void setUpRecyclerViewsAndViewPager() {
+        currentMoviesAdapter = new ViewPagerAdapter(getContext(),currentMovies);
+        binding.currentlyShowingViewPager.setAdapter(currentMoviesAdapter);
+
         binding.upcomingRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL,false));
         upcomingAdapter = new HomeAdapter(getContext(),upcomingMovies);
         binding.upcomingRecyclerView.setAdapter(upcomingAdapter);

@@ -5,13 +5,12 @@
         android:id="@+id/movieItemRelativeLayout"
         android:layout_width="wrap_content"
         android:layout_height="250dp"
-        android:layout_margin="10dp"
-        android:background="@drawable/background">
+        android:layout_margin="10dp">
 
         <ImageView
             android:id="@+id/movieItemImage"
             android:layout_width="150dp"
-            android:layout_height="250dp"
+            android:layout_height="200dp"
             android:scaleType="centerCrop"
             android:src="@drawable/bloodshot" />
 
@@ -44,7 +43,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="8dp"
                 android:layout_toLeftOf="@id/movieItemVotes"
-                android:src="@drawable/ic_like" />
+                android:src="@drawable/ic_favorite" />
 
             <TextView
                 android:id="@+id/movieItemVotes"

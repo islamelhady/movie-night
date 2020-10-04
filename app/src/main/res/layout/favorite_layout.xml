@@ -1,35 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#ECEFF1"
-    android:padding="4dp">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/noBookmarks"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="no_bookmarks"
-            android:textSize="30sp"
-            android:textStyle="italic"
-            android:textColor="@color/colorPrimaryDark"
-            android:visibility="gone" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/favorite_movie_show_rv"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="#292B2B"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your Wishlist"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:textSize="22dp"
+            android:layout_margin="20dp"
+            android:id="@+id/wishListText" />
 
-    </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_below="@id/wishListText"
+            android:id="@+id/wishListRecyclerView" />
 
-</FrameLayout>
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_search"
+            android:visibility="gone"
+            android:id="@+id/noItemsPlaceHolder"
+            android:layout_height="300dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#414243"
+            android:textStyle="bold"
+            android:visibility="gone"
+            android:layout_below="@id/noItemsPlaceHolder"
+            android:id="@+id/placeHolderText"
+            android:text="No items in your Wishlist !" />
+
+    </RelativeLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:id="@+id/clearWishList"
+        app:borderWidth="0dp"
+        android:backgroundTint="#780A02"
+        android:src="@drawable/ic_favorite"
+        android:foregroundGravity="center"
+        android:layout_margin="30dp"
+        android:layout_height="wrap_content" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
