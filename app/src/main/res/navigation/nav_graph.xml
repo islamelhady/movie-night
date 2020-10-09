@@ -8,7 +8,11 @@
     <fragment
         android:id="@+id/home2"
         android:name="com.elhady.fav_movie.ui.fragments.Home"
-        android:label="Home" />
+        android:label="Home" >
+        <action
+            android:id="@+id/action_home2_to_movies"
+            app:destination="@id/movies" />
+    </fragment>
     <fragment
         android:id="@+id/favorite"
         android:name="com.elhady.fav_movie.ui.fragments.Favorite"
@@ -17,4 +21,13 @@
         android:id="@+id/searchMovies"
         android:name="com.elhady.fav_movie.ui.fragments.SearchMovies"
         android:label="SearchMovies" />
+    <fragment
+        android:id="@+id/movies"
+        android:name="com.elhady.fav_movie.ui.fragments.Movies"
+        android:label="Movies" >
+        <argument
+            android:name="movieCategory"
+            app:argType="string"
+            android:defaultValue="Popular" />
+    </fragment>
 </navigation>
