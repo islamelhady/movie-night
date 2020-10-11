@@ -1,11 +1,15 @@
 package com.elhady.fav_movie.network;
 
+import com.elhady.fav_movie.model.Actor;
+import com.elhady.fav_movie.model.Movie;
 import com.elhady.fav_movie.model.MovieResponse;
+import com.google.gson.JsonObject;
 
 import java.util.HashMap;
 
 import io.reactivex.rxjava3.core.Observable;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
 
 public interface MovieApiService {
@@ -21,4 +25,13 @@ public interface MovieApiService {
 
     @GET("movie/top_rated")
     Observable<MovieResponse> getTopRated(@QueryMap HashMap<String,String> queries);
+
+    @GET("movie/{movie_id}")
+    Observable<Movie> getMovieDetails(@Path("movie_id") int id, @QueryMap HashMap<String,String> queries);
+
+    @GET("movie/{movie_id}/credits")
+    Observable<JsonObject> getCast(@Path ("movie_id") int id, @QueryMap HashMap<String,String> queries);
+
+    @GET("person/{person_id}")
+    Observable<Actor> getActorDetails(@Path ("person_id") int id, @QueryMap HashMap<String, String> queries);
 }
