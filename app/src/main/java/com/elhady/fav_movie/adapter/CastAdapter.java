@@ -27,9 +27,8 @@ public class CastAdapter extends RecyclerView.Adapter<CastAdapter.CastViewModel>
         this.castList = castList;
     }
 
-    public void setMoviesList(ArrayList<Cast> castList) {
+    public void setCastList(ArrayList<Cast> castList) {
         this.castList = castList;
-        notifyDataSetChanged();
     }
 
     @NonNull
