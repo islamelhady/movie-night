@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -19,6 +20,7 @@ import com.elhady.fav_movie.R;
 import com.elhady.fav_movie.Utils.Constants;
 import com.elhady.fav_movie.databinding.CuttentlyShowItemBinding;
 import com.elhady.fav_movie.model.Movie;
+import com.elhady.fav_movie.ui.fragments.HomeDirections;
 
 import java.util.ArrayList;
 
@@ -54,14 +56,14 @@ public class ViewPagerAdapter extends RecyclerView.Adapter<ViewPagerAdapter.View
         Glide.with(context).load(Constants.ImageBaseURL+ movieList.get(position).getBackdrop_path())
                 .into(holder.binding.currentlyShowingMovieImage);
 
-//        holder.binding.currentlyShowingLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                HomeFragmentDirections.ActionNavigationHomeToMovieDetails action = HomeFragmentDirections
-//                        .actionNavigationHomeToMovieDetails(movieList.get(position).getId());
-//                Navigation.findNavController(view).navigate(action);
-//            }
-//        });
+        holder.binding.currentlyShowingLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HomeDirections.ActionHome2ToMovieDetails action = HomeDirections
+                        .actionHome2ToMovieDetails(movieList.get(position).getId());
+                Navigation.findNavController(view).navigate(action);
+            }
+        });
 
         holder.binding.currentlyShowingMovieImage.setClipToOutline(true);
         holder.binding.currentlyShowingLayout.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));

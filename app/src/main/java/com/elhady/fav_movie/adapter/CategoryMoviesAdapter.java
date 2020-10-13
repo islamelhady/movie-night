@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.elhady.fav_movie.Utils.Constants;
 import com.elhady.fav_movie.databinding.MovieItemBinding;
 import com.elhady.fav_movie.model.Movie;
+import com.elhady.fav_movie.ui.fragments.MoviesDirections;
 
 import java.util.ArrayList;
 
@@ -65,6 +66,15 @@ public class CategoryMoviesAdapter extends RecyclerView.Adapter<CategoryMoviesAd
         holder.binding.movieYear.setText(movieYear[0]);
         Glide.with(context).load(Constants.ImageBaseURL + moviesList.get(position).getPoster_path())
                 .into(holder.binding.movieImage);
+
+        holder.binding.movieItemLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MoviesDirections.ActionMoviesToMovieDetails action =
+                        MoviesDirections.actionMoviesToMovieDetails(moviesList.get(position).getId());
+                Navigation.findNavController(view).navigate(action);
+            }
+        });
 
 
         holder.binding.movieItemLayout.setClipToOutline(true);

@@ -3,16 +3,19 @@ package com.elhady.fav_movie.adapter;
 import android.content.Context;
 import android.os.Build;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.elhady.fav_movie.Utils.Constants;
 import com.elhady.fav_movie.databinding.HomeItemBinding;
 import com.elhady.fav_movie.model.Movie;
+import com.elhady.fav_movie.ui.fragments.HomeDirections;
 
 import java.util.ArrayList;
 
@@ -49,6 +52,15 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
 
         Glide.with(context).load(Constants.ImageBaseURLw500 + moviesList.get(position).getPoster_path())
                 .into(holder.binding.movieItemImage);
+
+        holder.binding.movieItemRelativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HomeDirections.ActionHome2ToMovieDetails action = HomeDirections
+                        .actionHome2ToMovieDetails(moviesList.get(position).getId());
+                Navigation.findNavController(view).navigate(action);
+            }
+        });
     }
 
     @Override
