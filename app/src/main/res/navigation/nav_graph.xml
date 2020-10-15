@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
     app:startDestination="@id/home2">
@@ -8,7 +7,7 @@
     <fragment
         android:id="@+id/home2"
         android:name="com.elhady.fav_movie.ui.fragments.Home"
-        android:label="Home" >
+        android:label="Home">
         <action
             android:id="@+id/action_home2_to_movies"
             app:destination="@id/movies" />
@@ -23,15 +22,19 @@
     <fragment
         android:id="@+id/searchMovies"
         android:name="com.elhady.fav_movie.ui.fragments.SearchMovies"
-        android:label="SearchMovies" />
+        android:label="SearchMovies" >
+        <action
+            android:id="@+id/action_searchMovies_to_movieDetails"
+            app:destination="@id/movieDetails" />
+    </fragment>
     <fragment
         android:id="@+id/movies"
         android:name="com.elhady.fav_movie.ui.fragments.Movies"
-        android:label="Movies" >
+        android:label="Movies">
         <argument
             android:name="movieCategory"
-            app:argType="string"
-            android:defaultValue="Popular" />
+            android:defaultValue="Popular"
+            app:argType="string" />
         <action
             android:id="@+id/action_movies_to_movieDetails"
             app:destination="@id/movieDetails" />
@@ -43,6 +46,20 @@
         app:exitAnim="@android:anim/slide_out_right">
         <argument
             android:name="movieId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_movieDetails_to_actorDetails"
+            app:destination="@id/actorDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/actorDetails"
+        android:name="com.elhady.fav_movie.ui.fragments.ActorDetails"
+        android:label="ActorDetails">
+        <action
+            android:id="@+id/action_actorDetails_to_movieDetails"
+            app:destination="@id/movieDetails" />
+        <argument
+            android:name="personId"
             app:argType="integer" />
     </fragment>
 </navigation>

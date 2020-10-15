@@ -2,65 +2,103 @@ package com.elhady.fav_movie.ui.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
 import com.elhady.fav_movie.R;
+import com.elhady.fav_movie.Utils.Constants;
+import com.elhady.fav_movie.adapter.KnownForMoviesAdapter;
+import com.elhady.fav_movie.databinding.ActorDetailsLayoutBinding;
+import com.elhady.fav_movie.model.Actor;
+import com.elhady.fav_movie.model.Movie;
+import com.elhady.fav_movie.viewmodel.HomeViewModel;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.reflect.TypeToken;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ActorDetails#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.HashMap;
+
+
 public class ActorDetails extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private static final String TAG = "ActorDetails";
+    private ActorDetailsLayoutBinding binding;
+    private HomeViewModel viewModel;
+    private Integer personID;
+    private HashMap<String, String> queries;
+    private KnownForMoviesAdapter adapter;
+    private ArrayList<Movie> popularMovies;
 
     public ActorDetails() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ActorDetails.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ActorDetails newInstance(String param1, String param2) {
-        ActorDetails fragment = new ActorDetails();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        binding = ActorDetailsLayoutBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+        return view;
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        viewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+
+        ActorDetailsArgs args = ActorDetailsArgs.fromBundle(getArguments());
+        personID = args.getPersonId();
+
+        queries = new HashMap<>();
+        queries.put("api_key", Constants.API_KEY);
+        queries.put("append_to_response", "movie_credits");
+
+        viewModel.getActorDetails(personID, queries);
+
+        viewModel.getActor().observe(getViewLifecycleOwner(), new Observer<Actor>() {
+            @Override
+            public void onChanged(Actor actor) {
+
+                binding.actorName.setText(actor.getName());
+                binding.actorBirthday.setText(actor.getBirthday());
+                binding.actorBio.setText(actor.getBiography());
+                binding.actorPlace.setText(actor.getPlace_of_birth());
+                Glide.with(getContext()).load(Constants.ImageBaseURL + actor.getProfile_path())
+                        .into(binding.actorImage);
+                binding.actorPopularity.setText(actor.getPopularity() + "");
+                binding.actorBioText.setVisibility(View.VISIBLE);
+                binding.knownForText.setVisibility(View.VISIBLE);
+                binding.popularityIcon.setVisibility(View.VISIBLE);
+                JsonArray array = actor.getMovie_credits().getAsJsonArray("cast");
+                popularMovies = new Gson().fromJson(array.toString(), new TypeToken<ArrayList<Movie>>() {}.getType());
+                initKnownFor(popularMovies);
+
+            }
+        });
+        binding.knownForRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+    }
+
+    private void initKnownFor(ArrayList<Movie> movies) {
+        Log.e(TAG, "initKnownFor: "+ movies.size() );
+        binding.knownForRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.HORIZONTAL,false));
+        adapter = new KnownForMoviesAdapter(getContext(),movies);
+        binding.knownForRecyclerView.setAdapter(adapter);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.actor_details_layout, container, false);
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }
