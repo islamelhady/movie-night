@@ -34,4 +34,7 @@ public interface MovieApiService {
 
     @GET("person/{person_id}")
     Observable<Actor> getActorDetails(@Path ("person_id") int id, @QueryMap HashMap<String, String> queries);
+
+    @GET("search/movie")
+    Observable<JsonObject> getMoviesBySearch(@QueryMap HashMap<String,String> queries);
 }

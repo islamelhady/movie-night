@@ -50,5 +50,10 @@ public class Repository {
         return movieApiService.getActorDetails(personId,map);
     }
 
+    public Observable<JsonObject> getMoviesBySearch( HashMap<String, String> map){
+        return movieApiService.getMoviesBySearch(map);
+
+    }
+
 
 }

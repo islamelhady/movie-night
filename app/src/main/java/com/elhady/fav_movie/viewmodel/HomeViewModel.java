@@ -35,6 +35,7 @@ public class HomeViewModel extends ViewModel {
     private MutableLiveData<ArrayList<Movie>> popularMoviesList = new MutableLiveData<>();
     private MutableLiveData<ArrayList<Movie>> topRatedMoviesList = new MutableLiveData<>();
     private MutableLiveData<ArrayList<Movie>> upcomingMoviesList = new MutableLiveData<>();
+    private MutableLiveData<ArrayList<Movie>> queriesMovies = new MutableLiveData<>();
     private MutableLiveData<ArrayList<Cast>> movieCastList = new MutableLiveData<>();
     private MutableLiveData<Movie> movieDetails = new MutableLiveData<>();
     private MutableLiveData<Actor> actorDetails = new MutableLiveData<>();
@@ -72,6 +73,10 @@ public class HomeViewModel extends ViewModel {
 
     public MutableLiveData<ArrayList<Cast>> getMovieCastList() {
         return movieCastList;
+    }
+
+    public MutableLiveData<ArrayList<Movie>> getQueriesMovies() {
+        return queriesMovies;
     }
 
 
@@ -175,6 +180,25 @@ public class HomeViewModel extends ViewModel {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(result -> actorDetails.setValue(result),
                         error -> Log.e(TAG, "getActorDetails: " + error.getMessage()))
+        );
+    }
+
+    public void getQueriedMovies(HashMap<String, String> map){
+        disposable.add(repository.getMoviesBySearch(map)
+                .subscribeOn(Schedulers.io())
+                .map(new Function<JsonObject, ArrayList<Movie>>() {
+                         @Override
+                         public ArrayList<Movie> apply(JsonObject jsonObject) throws Throwable {
+                             JsonArray jsonArray = jsonObject.getAsJsonArray("results");
+                             ArrayList<Movie> movieList = new Gson().fromJson(jsonArray.toString(),
+                                     new TypeToken<ArrayList<Movie>>(){}.getType());
+                             return movieList;
+                         }
+                     }
+                )
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(result->queriesMovies.setValue(result),
+                        error-> Log.e(TAG, "getPopularMovies: " + error.getMessage() ))
         );
     }
 }
