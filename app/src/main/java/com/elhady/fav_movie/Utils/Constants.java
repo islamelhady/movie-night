@@ -9,6 +9,7 @@ public class Constants {
     public static final String ImageBaseURL = "https://image.tmdb.org/t/p/original";
     public static final String ImageBaseURLw780 = "https://image.tmdb.org/t/p/w780";
     public static final String ImageBaseURLw500 = "https://image.tmdb.org/t/p/w500";
+    public static final String DataBaseName = "FavoriteDB";
 
     public static final String Popular = "Popular";
     public static final String Upcoming = "Upcoming";
