@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -14,6 +15,7 @@ import com.elhady.fav_movie.Utils.Constants;
 import com.elhady.fav_movie.databinding.CastItemBinding;
 import com.elhady.fav_movie.model.Cast;
 import com.elhady.fav_movie.model.Movie;
+import com.elhady.fav_movie.ui.fragments.MovieDetailsDirections;
 
 import java.util.ArrayList;
 
@@ -46,6 +48,15 @@ public class CastAdapter extends RecyclerView.Adapter<CastAdapter.CastViewModel>
         Glide.with(context).load(Constants.ImageBaseURL + castList.get(position).getProfile_path())
                 .apply(RequestOptions.circleCropTransform())
                 .into(holder.binding.castImage);
+
+        holder.binding.castItemLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MovieDetailsDirections.ActionMovieDetailsToActorDetails action =
+                        MovieDetailsDirections.actionMovieDetailsToActorDetails(castList.get(position).getId());
+                Navigation.findNavController(view).navigate(action);
+            }
+        });
 
     }
 
