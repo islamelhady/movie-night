@@ -17,11 +17,11 @@ public interface FavoriteDao {
     void delete(int movieId);
 
     @Query("DELETE FROM favorite_table")
-    void clearWishList();
+    void clearFavoriteList();
 
     @Query("SELECT * FROM favorite_table")
-    LiveData<List<FavoriteMovie>> getWishList();
+    LiveData<List<FavoriteMovie>> getFavoriteList();
 
     @Query("SELECT * FROM favorite_table WHERE id = :movieId ")
-    FavoriteMovie getWishListMovie(int movieId);
+    FavoriteMovie getFavoriteListMovie(int movieId);
 }

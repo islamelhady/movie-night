@@ -1,5 +1,11 @@
 package com.elhady.fav_movie.repository;
 
+import android.util.Log;
+
+import androidx.lifecycle.LiveData;
+
+import com.elhady.fav_movie.db.FavoriteDao;
+import com.elhady.fav_movie.db.FavoriteMovie;
 import com.elhady.fav_movie.model.Actor;
 import com.elhady.fav_movie.model.Movie;
 import com.elhady.fav_movie.model.MovieResponse;
@@ -7,6 +13,7 @@ import com.elhady.fav_movie.network.MovieApiService;
 import com.google.gson.JsonObject;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -16,11 +23,14 @@ public class Repository {
     public static final String TAG = "Repository";
 
     MovieApiService movieApiService;
+    FavoriteDao favoriteDao;
 
     @Inject
-    public Repository(MovieApiService movieApiService) {
+    public Repository(MovieApiService movieApiService, FavoriteDao favoriteDao) {
         this.movieApiService = movieApiService;
+        this.favoriteDao = favoriteDao;
     }
+
 
     public Observable<MovieResponse> getCurrentlyShowing(HashMap<String, String> map){
         return movieApiService.getCurrentlyShowing(map);
@@ -54,6 +64,28 @@ public class Repository {
         return movieApiService.getMoviesBySearch(map);
 
     }
+
+    public void insertMovie(FavoriteMovie favoriteMovie){
+        Log.e(TAG, "insertMovie: " );
+        favoriteDao.insert(favoriteMovie);
+    }
+
+    public void deleteMovie(int movieId){
+        favoriteDao.delete(movieId);
+    }
+
+    public void clearFavoriteList(){
+        favoriteDao.clearFavoriteList();
+    }
+
+    public LiveData<List<FavoriteMovie>> getFavoriteList(){
+        return  favoriteDao.getFavoriteList();
+    }
+
+    public FavoriteMovie getFavoriteListMovie(int movieId){
+        return favoriteDao.getFavoriteListMovie(movieId);
+    }
+
 
 
 }
