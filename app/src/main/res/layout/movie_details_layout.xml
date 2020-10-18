@@ -65,7 +65,7 @@
                     android:textSize="14dp" />
 
                 <ImageView
-                    android:id="@+id/addToWishList"
+                    android:id="@+id/addToFavoriteList"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_below="@id/moviePoster"

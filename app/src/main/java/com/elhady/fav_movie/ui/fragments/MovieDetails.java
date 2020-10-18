@@ -1,5 +1,6 @@
 package com.elhady.fav_movie.ui.fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -12,17 +13,22 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.elhady.fav_movie.R;
 import com.elhady.fav_movie.Utils.Constants;
 import com.elhady.fav_movie.adapter.CastAdapter;
 import com.elhady.fav_movie.databinding.MovieDetailsLayoutBinding;
+import com.elhady.fav_movie.db.FavoriteMovie;
 import com.elhady.fav_movie.model.Cast;
 import com.elhady.fav_movie.model.Movie;
+import com.elhady.fav_movie.ui.fragments.dialog.VideoDialog;
 import com.elhady.fav_movie.viewmodel.HomeViewModel;
 import com.google.gson.JsonArray;
 
@@ -37,11 +43,14 @@ public class MovieDetails extends Fragment {
     private HomeViewModel viewModel;
     private Integer movieId;
     private HashMap<String, String> queryMap;
-    private String temp;
+    private String temp,videoId;
     private CastAdapter adapter;
     private ArrayList<Cast> castList;
-    private int hour = 0, min = 0;
-    private Movie movie;
+    private int hour =0,min = 0;
+    private  Movie mMovie;
+
+    private Boolean inWishList = false;
+    private ArrayList<MediaStore.Video> videos;
 
     public MovieDetails() {
         // Required empty public constructor
@@ -67,51 +76,94 @@ public class MovieDetails extends Fragment {
         movieId = args.getMovieId();
 
 
-        observeData();
-
         queryMap.put("api_key", Constants.API_KEY);
-        queryMap.put("page", "1");
-        queryMap.put("append_to_response", "videos");
+        queryMap.put("page","1");
+        queryMap.put("append_to_response","videos");
 
-        viewModel.getMovieDetails(movieId, queryMap);
-        viewModel.getCast(movieId, queryMap);
+        viewModel.getMovieDetails(movieId,queryMap);
+        viewModel.getCast(movieId,queryMap);
 
-        binding.castRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
-        adapter = new CastAdapter(getContext(), castList);
+        binding.castRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL,false));
+        adapter = new CastAdapter(getContext(),castList);
         binding.castRecyclerView.setAdapter(adapter);
         binding.moviePoster.setClipToOutline(true);
 
+        binding.addToFavoriteList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(inWishList){
+                    viewModel.deleteMovie(movieId);
+                    binding.addToFavoriteList.setImageResource(R.drawable.ic_play);
+                    Toast.makeText(getContext(),"Removed from WishList.",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    FavoriteMovie movie = new FavoriteMovie(mMovie.getId(),mMovie.getPoster_path(),mMovie.getOverview(),
+                            mMovie.getRelease_date(),mMovie.getTitle(),mMovie.getBackdrop_path(),mMovie.getVote_count(),
+                            mMovie.getRuntime());
+                    viewModel.insertMovie(movie);
+                    binding.addToFavoriteList.setImageResource(R.drawable.ic_play);
+                    Toast.makeText(getContext(),"Added to WishList.",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        binding.playTrailer.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SourceLockedOrientationActivity")
+            @Override
+            public void onClick(View view) {
+                if(videoId != null){
+                    VideoDialog dialog = new VideoDialog(videoId);
+                    dialog.show(getParentFragmentManager(),"Video Dialog");
+                }
+                else
+                    Toast.makeText(getContext(),"Sorry trailer not found!",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void isMovieInWishList(int movieId) {
+        if(viewModel.getWishListMovie(movieId) != null) {
+            binding.addToFavoriteList.setImageResource(R.drawable.ic_playlist);
+            inWishList = true;
+        }
+        else {
+            binding.addToFavoriteList.setImageResource(R.drawable.ic_playlist_add);
+            inWishList = false;
+        }
+        binding.addToFavoriteList.setVisibility(View.VISIBLE);
     }
 
     private void observeData() {
         viewModel.getMovie().observe(getViewLifecycleOwner(), new Observer<Movie>() {
             @Override
             public void onChanged(Movie movie) {
-                movie = movie;
+                mMovie = movie;
                 Glide.with(getContext()).load(Constants.ImageBaseURL + movie.getPoster_path())
                         .centerCrop()
                         .into(binding.moviePoster);
 
                 binding.movieName.setText(movie.getTitle());
 
-                hour = movie.getRuntime() / 60;
-                min = movie.getRuntime() % 60;
-                binding.movieRuntime.setText(hour + "h " + min + "m");
+                hour = movie.getRuntime()/60;
+                min = movie.getRuntime()%60;
+                binding.movieRuntime.setText(hour+"h "+min+"m");
                 binding.moviePlot.setText(movie.getOverview());
                 temp = "";
-                for (int i = 0; i < movie.getGenres().size(); i++) {
-                    if (i == movie.getGenres().size() - 1)
-                        temp += movie.getGenres().get(i).getName();
+                for (int i = 0; i < movie.getGenres().size(); i++){
+                    if(i ==  movie.getGenres().size() -1)
+                        temp+= movie.getGenres().get(i).getName();
                     else
-                        temp += movie.getGenres().get(i).getName() + " | ";
+                        temp+= movie.getGenres().get(i).getName() + " | ";
                 }
 
                 binding.movieGenre.setText(temp);
                 binding.playTrailer.setVisibility(View.VISIBLE);
                 binding.movieCastText.setVisibility(View.VISIBLE);
                 binding.moviePlotText.setVisibility(View.VISIBLE);
+                isMovieInWishList(movieId);
 
                 JsonArray array = movie.getVideos().getAsJsonArray("results");
+                videoId = array.get(0).getAsJsonObject().get("key").getAsString();
             }
         });
 
@@ -121,7 +173,6 @@ public class MovieDetails extends Fragment {
                 Log.e(TAG, "onChanged: " + actors.size() );
                 adapter.setCastList(actors);
                 adapter.notifyDataSetChanged();
-
             }
         });
     }

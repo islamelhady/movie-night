@@ -6,6 +6,7 @@ import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.elhady.fav_movie.db.FavoriteMovie;
 import com.elhady.fav_movie.model.Actor;
 import com.elhady.fav_movie.model.Cast;
 import com.elhady.fav_movie.model.Genre;
@@ -200,5 +201,26 @@ public class HomeViewModel extends ViewModel {
                 .subscribe(result->queriesMovies.setValue(result),
                         error-> Log.e(TAG, "getPopularMovies: " + error.getMessage() ))
         );
+    }
+
+    // room methods
+
+    public void insertMovie(FavoriteMovie favoriteMovie){
+        Log.e(TAG, "insertMovie: " );
+        repository.insertMovie(favoriteMovie);
+    }
+
+    public void deleteMovie(int movieId){
+        repository.deleteMovie(movieId);
+    }
+
+    public FavoriteMovie getWishListMovie(int movieId){
+        return  repository.getFavoriteListMovie(movieId);
+    }
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        disposable.clear();
     }
 }
