@@ -8,12 +8,14 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.elhady.fav_movie.Utils.Constants;
 import com.elhady.fav_movie.databinding.HomeItemBinding;
 import com.elhady.fav_movie.model.Movie;
+import com.elhady.fav_movie.ui.fragments.ActorDetailsDirections;
 
 import java.util.ArrayList;
 
@@ -49,6 +51,15 @@ public class KnownForMoviesAdapter extends RecyclerView.Adapter<KnownForMoviesAd
 
         Glide.with(mContext).load(Constants.ImageBaseURLw500 + moviesList.get(position).getPoster_path())
                 .into(holder.binding.movieItemImage);
+
+        holder.binding.movieItemRelativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ActorDetailsDirections.ActionActorDetailsToMovieDetails action = ActorDetailsDirections
+                        .actionActorDetailsToMovieDetails(moviesList.get(position).getId());
+                Navigation.findNavController(view).navigate(action);
+            }
+        });
 
     }
 

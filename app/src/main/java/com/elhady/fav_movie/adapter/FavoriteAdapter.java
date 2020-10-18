@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.elhady.fav_movie.Utils.Constants;
 import com.elhady.fav_movie.databinding.HomeItemBinding;
 import com.elhady.fav_movie.db.FavoriteMovie;
+import com.elhady.fav_movie.ui.fragments.FavoriteDirections;
 import com.elhady.fav_movie.ui.fragments.SearchMoviesDirections;
 
 import java.util.List;
@@ -56,8 +57,8 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
         holder.binding.movieItemRelativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SearchMoviesDirections.ActionSearchMoviesToMovieDetails action =
-                        SearchMoviesDirections.actionSearchMoviesToMovieDetails(moviesList.get(position).getId());
+                FavoriteDirections.ActionFavoriteToMovieDetails action =
+                        FavoriteDirections.actionFavoriteToMovieDetails(moviesList.get(position).getId());
                 Navigation.findNavController(view).navigate(action);
             }
         });
