@@ -26,7 +26,9 @@ import com.elhady.fav_movie.viewmodel.HomeViewModel;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import dagger.hilt.android.AndroidEntryPoint;
 
+@AndroidEntryPoint
 public class SearchMovies extends Fragment {
     private SearchMoviesLayoutBinding binding;
     private HomeViewModel viewModel;

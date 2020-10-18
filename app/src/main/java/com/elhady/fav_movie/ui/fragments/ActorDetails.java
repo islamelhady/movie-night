@@ -30,7 +30,9 @@ import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import dagger.hilt.android.AndroidEntryPoint;
 
+@AndroidEntryPoint
 public class ActorDetails extends Fragment {
     private static final String TAG = "ActorDetails";
     private ActorDetailsLayoutBinding binding;

@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.elhady.fav_movie.Utils.Constants;
 import com.elhady.fav_movie.databinding.MovieItemBinding;
-import com.elhady.fav_movie.databinding.SearchMoviesLayoutBinding;
 import com.elhady.fav_movie.model.Movie;
 import com.elhady.fav_movie.ui.fragments.SearchMoviesDirections;
 

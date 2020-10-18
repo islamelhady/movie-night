@@ -35,7 +35,9 @@ import com.google.gson.JsonArray;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import dagger.hilt.android.AndroidEntryPoint;
 
+@AndroidEntryPoint
 public class MovieDetails extends Fragment {
 
     private static final String TAG = "MovieDetails";

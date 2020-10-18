@@ -22,6 +22,9 @@ import com.elhady.fav_movie.viewmodel.HomeViewModel;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class Movies extends Fragment {
 
     private MoviesLayoutBinding binding;

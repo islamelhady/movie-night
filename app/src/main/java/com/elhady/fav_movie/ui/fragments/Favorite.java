@@ -20,6 +20,9 @@ import com.elhady.fav_movie.viewmodel.FavoriteViewModel;
 
 import java.util.List;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class Favorite extends Fragment {
 
     private FavoriteViewModel viewModel;
