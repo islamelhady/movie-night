@@ -47,13 +47,13 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/movieName"
             android:textColor="#CDC7C7"
-            android:textSize="10dp"
+            android:textSize="10sp"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
             android:layout_margin="5dp"
             android:layout_centerHorizontal="true"
             android:gravity="center_horizontal"
-            android:text="Action | Thriller | Drama "
+            android:text="Action • Thriller • Drama "
             android:id="@+id/movieGenre" />
 
         <RatingBar

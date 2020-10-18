@@ -20,7 +20,7 @@
                 android:layout_margin="20dp"
                 android:text="Your Favorite List"
                 android:textColor="@color/colorPrimary"
-                android:textSize="22dp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -46,14 +46,14 @@
                 android:layout_centerHorizontal="true"
                 android:text="No items in your Favorite List !"
                 android:textColor="#414243"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:visibility="gone" />
 
         </RelativeLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/clearWishList"
+            android:id="@+id/clearFavList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"

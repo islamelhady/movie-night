@@ -22,7 +22,7 @@
                     android:layout_margin="10dp"
                     android:text="Currently Showing"
                     android:textColor="#fff"
-                    android:textSize="22dp"
+                    android:textSize="22sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -51,7 +51,7 @@
                     android:layout_margin="10dp"
                     android:text="Upcoming movies "
                     android:textColor="#fff"
-                    android:textSize="22dp"
+                    android:textSize="22sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -80,7 +80,7 @@
                     android:layout_margin="10dp"
                     android:text="Popular movies "
                     android:textColor="#fff"
-                    android:textSize="22dp"
+                    android:textSize="22sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -109,7 +109,7 @@
                     android:layout_margin="10dp"
                     android:text="Top-rated movies"
                     android:textColor="#fff"
-                    android:textSize="22dp"
+                    android:textSize="22sp"
                     android:textStyle="bold" />
 
                 <TextView

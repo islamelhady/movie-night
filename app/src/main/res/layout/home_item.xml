@@ -34,7 +34,7 @@
                 android:paddingRight="5dp"
                 android:text="Bloodshot"
                 android:textColor="#fff"
-                android:textSize="10dp"
+                android:textSize="10sp"
                 android:textStyle="bold" />
 
             <ImageView
@@ -43,7 +43,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="8dp"
                 android:layout_toLeftOf="@id/movieItemVotes"
-                android:src="@drawable/ic_favorite" />
+                android:src="@drawable/ic_like" />
 
             <TextView
                 android:id="@+id/movieItemVotes"
@@ -54,7 +54,7 @@
                 android:layout_marginRight="6dp"
                 android:text="1.2K"
                 android:textColor="#fff"
-                android:textSize="12dp"
+                android:textSize="12sp"
                 android:textStyle="bold" />
         </RelativeLayout>
 

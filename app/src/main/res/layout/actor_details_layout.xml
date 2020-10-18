@@ -46,7 +46,7 @@
                         android:layout_below="@id/actorName"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="30dp"
-                        android:src="@drawable/ic_favorite"
+                        android:src="@drawable/ic_like"
                         android:visibility="gone" />
 
                     <TextView
@@ -58,7 +58,7 @@
                         android:layout_marginRight="25dp"
                         android:gravity="center"
                         android:textColor="#fff"
-                        android:textSize="16dp" />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/actorName"
@@ -67,7 +67,7 @@
                         android:layout_marginLeft="80dp"
                         android:layout_marginTop="30dp"
                         android:textColor="#fff"
-                        android:textSize="24dp"
+                        android:textSize="24sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -97,7 +97,7 @@
                         android:layout_marginTop="10dp"
                         android:text="Bio"
                         android:textColor="#fff"
-                        android:textSize="18dp"
+                        android:textSize="18sp"
                         android:textStyle="bold"
                         android:visibility="gone" />
 
@@ -120,7 +120,7 @@
                         android:layout_marginTop="10dp"
                         android:text="Known For"
                         android:textColor="#fff"
-                        android:textSize="18dp"
+                        android:textSize="18sp"
                         android:textStyle="bold"
                         android:visibility="gone" />
 

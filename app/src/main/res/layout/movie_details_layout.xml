@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#242525">
+        android:background="@color/colorBackGround">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -41,7 +42,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="10dp"
                     android:textColor="#fff"
-                    android:textSize="22dp"
+                    android:textSize="22sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -52,7 +53,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:textColor="#fff"
-                    android:textSize="14dp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/movieRuntime"
@@ -62,7 +63,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:textColor="#fff"
-                    android:textSize="14dp" />
+                    android:textSize="14sp" />
 
                 <ImageView
                     android:id="@+id/addToFavoriteList"
@@ -72,7 +73,8 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="80dp"
                     android:layout_marginRight="30dp"
-                    android:src="@drawable/ic_play"
+                    android:src="@drawable/ic_playlist"
+                    app:tint="@color/colorPrimary"
                     android:visibility="gone" />
 
                 <TextView
@@ -84,7 +86,7 @@
                     android:layout_marginTop="10dp"
                     android:text="Plot Summary"
                     android:textColor="#fff"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     android:visibility="gone" />
 

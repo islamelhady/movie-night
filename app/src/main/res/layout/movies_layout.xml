@@ -5,7 +5,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimaryDark">
+        android:background="@color/colorBackGround">
 
         <TextView
             android:id="@+id/moviesCategoryTitle"
@@ -13,8 +13,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:text="Popular"
-            android:textColor="#fff"
-            android:textSize="24dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView

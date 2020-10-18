@@ -45,7 +45,7 @@ public class Favorite extends Fragment {
         intiRecyclerView();
         observeData();
 
-        binding.clearWishList.setOnClickListener(new View.OnClickListener() {
+        binding.clearFavList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 viewModel.clearWishList();
