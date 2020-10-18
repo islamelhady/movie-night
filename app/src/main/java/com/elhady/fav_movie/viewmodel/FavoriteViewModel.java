@@ -10,7 +10,6 @@ import com.elhady.fav_movie.repository.Repository;
 import java.util.List;
 
 public class FavoriteViewModel extends ViewModel {
-    private static final String TAG = "WishListViewModel";
     private Repository repository;
     private LiveData<List<FavoriteMovie>> favoriteMoviesList;
 
