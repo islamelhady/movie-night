@@ -14,20 +14,20 @@
             android:background="@color/colorBackGround">
 
             <TextView
-                android:id="@+id/wishListText"
+                android:id="@+id/favListText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:text="Your Wishlist"
+                android:text="Your Favorite List"
                 android:textColor="@color/colorPrimary"
                 android:textSize="22dp"
                 android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/wishListRecyclerView"
+                android:id="@+id/favListRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/wishListText"
+                android:layout_below="@id/favListText"
                 android:layout_margin="10dp" />
 
             <ImageView
@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/noItemsPlaceHolder"
                 android:layout_centerHorizontal="true"
-                android:text="No items in your Wishlist !"
+                android:text="No items in your Favorite List !"
                 android:textColor="#414243"
                 android:textSize="20dp"
                 android:textStyle="bold"

@@ -10,7 +10,8 @@
         android:label="Home">
         <action
             android:id="@+id/action_home2_to_movies"
-            app:destination="@id/movies" />
+            app:destination="@id/movies"
+            app:exitAnim="@anim/fragment_fade_exit"/>
         <action
             android:id="@+id/action_home2_to_movieDetails"
             app:destination="@id/movieDetails" />
@@ -18,7 +19,11 @@
     <fragment
         android:id="@+id/favorite"
         android:name="com.elhady.fav_movie.ui.fragments.Favorite"
-        android:label="Favorite" />
+        android:label="Favorite" >
+        <action
+            android:id="@+id/action_favorite_to_movieDetails"
+            app:destination="@id/movieDetails" />
+    </fragment>
     <fragment
         android:id="@+id/searchMovies"
         android:name="com.elhady.fav_movie.ui.fragments.SearchMovies"

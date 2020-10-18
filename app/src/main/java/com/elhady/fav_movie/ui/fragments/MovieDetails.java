@@ -77,7 +77,7 @@ public class MovieDetails extends Fragment {
         MovieDetailsArgs args = MovieDetailsArgs.fromBundle(getArguments());
         movieId = args.getMovieId();
 
-
+        observeData();
         queryMap.put("api_key", Constants.API_KEY);
         queryMap.put("page","1");
         queryMap.put("append_to_response","videos");

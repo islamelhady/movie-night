@@ -75,9 +75,9 @@ public class Favorite extends Fragment {
     }
 
     private void intiRecyclerView() {
-        binding.wishListRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
+        binding.favListRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
         adapter  = new FavoriteAdapter(getContext(),moviesList);
-        binding.wishListRecyclerView.setAdapter(adapter);
+        binding.favListRecyclerView.setAdapter(adapter);
     }
 
     @Override
