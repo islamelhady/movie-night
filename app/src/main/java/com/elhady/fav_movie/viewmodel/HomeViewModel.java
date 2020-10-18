@@ -214,7 +214,7 @@ public class HomeViewModel extends ViewModel {
         repository.deleteMovie(movieId);
     }
 
-    public FavoriteMovie getWishListMovie(int movieId){
+    public FavoriteMovie getFavoriteListMovie(int movieId){
         return  repository.getFavoriteListMovie(movieId);
     }
 

@@ -51,7 +51,7 @@ public class MovieDetails extends Fragment {
     private int hour =0,min = 0;
     private  Movie mMovie;
 
-    private Boolean inWishList = false;
+    private Boolean inFavList = false;
     private ArrayList<MediaStore.Video> videos;
 
     public MovieDetails() {
@@ -93,10 +93,10 @@ public class MovieDetails extends Fragment {
         binding.addToFavoriteList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(inWishList){
+                if(inFavList){
                     viewModel.deleteMovie(movieId);
                     binding.addToFavoriteList.setImageResource(R.drawable.ic_play);
-                    Toast.makeText(getContext(),"Removed from WishList.",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),"Removed from Favorite List.",Toast.LENGTH_SHORT).show();
                 }
                 else {
                     FavoriteMovie movie = new FavoriteMovie(mMovie.getId(),mMovie.getPoster_path(),mMovie.getOverview(),
@@ -104,7 +104,7 @@ public class MovieDetails extends Fragment {
                             mMovie.getRuntime());
                     viewModel.insertMovie(movie);
                     binding.addToFavoriteList.setImageResource(R.drawable.ic_play);
-                    Toast.makeText(getContext(),"Added to WishList.",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),"Added to Favorite List.",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -123,14 +123,14 @@ public class MovieDetails extends Fragment {
         });
     }
 
-    private void isMovieInWishList(int movieId) {
-        if(viewModel.getWishListMovie(movieId) != null) {
+    private void isMovieInFavList(int movieId) {
+        if(viewModel.getFavoriteListMovie(movieId) != null) {
             binding.addToFavoriteList.setImageResource(R.drawable.ic_playlist);
-            inWishList = true;
+            inFavList = true;
         }
         else {
             binding.addToFavoriteList.setImageResource(R.drawable.ic_playlist_add);
-            inWishList = false;
+            inFavList = false;
         }
         binding.addToFavoriteList.setVisibility(View.VISIBLE);
     }
@@ -162,7 +162,7 @@ public class MovieDetails extends Fragment {
                 binding.playTrailer.setVisibility(View.VISIBLE);
                 binding.movieCastText.setVisibility(View.VISIBLE);
                 binding.moviePlotText.setVisibility(View.VISIBLE);
-                isMovieInWishList(movieId);
+                isMovieInFavList(movieId);
 
                 JsonArray array = movie.getVideos().getAsJsonArray("results");
                 videoId = array.get(0).getAsJsonObject().get("key").getAsString();
