@@ -14,7 +14,6 @@ import com.bumptech.glide.request.RequestOptions;
 import com.elhady.fav_movie.Utils.Constants;
 import com.elhady.fav_movie.databinding.CastItemBinding;
 import com.elhady.fav_movie.model.Cast;
-import com.elhady.fav_movie.model.Movie;
 import com.elhady.fav_movie.ui.fragments.MovieDetailsDirections;
 
 import java.util.ArrayList;

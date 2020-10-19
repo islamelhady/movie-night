@@ -16,7 +16,6 @@ import com.elhady.fav_movie.Utils.Constants;
 import com.elhady.fav_movie.databinding.HomeItemBinding;
 import com.elhady.fav_movie.db.FavoriteMovie;
 import com.elhady.fav_movie.ui.fragments.FavoriteDirections;
-import com.elhady.fav_movie.ui.fragments.SearchMoviesDirections;
 
 import java.util.List;
 

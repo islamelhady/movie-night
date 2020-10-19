@@ -155,7 +155,7 @@ public class MovieDetails extends Fragment {
                     if(i ==  movie.getGenres().size() -1)
                         temp+= movie.getGenres().get(i).getName();
                     else
-                        temp+= movie.getGenres().get(i).getName() + " | ";
+                        temp+= movie.getGenres().get(i).getName() + " • ";
                 }
 
                 binding.movieGenre.setText(temp);

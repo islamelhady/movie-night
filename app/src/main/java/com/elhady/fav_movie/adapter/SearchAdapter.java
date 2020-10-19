@@ -54,7 +54,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
             if(i ==  moviesList.get(position).getGenre_ids().size() -1)
                 temp+= Constants.getGenreMap().get(moviesList.get(position).getGenre_ids().get(i));
             else
-                temp+= Constants.getGenreMap().get(moviesList.get(position).getGenre_ids().get(i)) + " | ";
+                temp+= Constants.getGenreMap().get(moviesList.get(position).getGenre_ids().get(i)) + " • ";
         }
 
         holder.binding.movieGenre.setText(temp);
