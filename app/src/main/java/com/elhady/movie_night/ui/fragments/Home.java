@@ -1,12 +1,15 @@
 package com.elhady.movie_night.ui.fragments;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -32,10 +35,16 @@ public class Home extends Fragment {
     private static final String TAG = "Home";
     private HomeViewModel viewModel;
     private HomeLayoutBinding binding;
-    private ArrayList<Movie>  currentMovies,popularMovies, topRatedMovies, upcomingMovies;
+    private ArrayList<Movie> currentMovies, popularMovies, topRatedMovies, upcomingMovies;
     private ViewPagerAdapter currentMoviesAdapter;
-    private HomeAdapter upcomingAdapter,popularAdapter,topRatedAdapter;
+    private HomeAdapter upcomingAdapter, popularAdapter, topRatedAdapter;
     private HashMap<String, String> map = new HashMap<>();
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Nullable
     @Override
@@ -53,22 +62,33 @@ public class Home extends Fragment {
 
 
         map.put("api_key", Constants.API_KEY);
-        map.put("page","1");
-
+        map.put("page", "1");
+        binding.progressBar.setVisibility(View.VISIBLE);
         observeData();
         getMoviesList();
         setUpRecyclerViewsAndViewPager();
         setUpOnclick();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    @Override
+    public void onStart() {
+        super.onStart();
+        observeData();
+        binding.progressBar.setVisibility(View.VISIBLE);
+        if (Constants.isNetworkAvailable(getActivity())) {
+            getMoviesList();
+        } else {
+            observeData();
+            Toast.makeText(getActivity(), "No Internet Connection", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     private void observeData() {
         viewModel.getCurrentlyShowingList().observe(getViewLifecycleOwner(), new Observer<ArrayList<Movie>>() {
             @Override
             public void onChanged(ArrayList<Movie> movies) {
                 if (movies.size() == 0 || movies == null){
-                    binding.currentlyShowing.setVisibility(View.GONE);
-                    binding.viewAllCurrent.setVisibility(View.GONE);
                     binding.progressBar.setVisibility(View.VISIBLE);
                 }
                 else{
@@ -83,45 +103,27 @@ public class Home extends Fragment {
         viewModel.getUpcomingMoviesList().observe(getViewLifecycleOwner(), new Observer<ArrayList<Movie>>() {
             @Override
             public void onChanged(ArrayList<Movie> movies) {
-                if (movies.size() == 0 || movies == null){
-                    binding.upcomingShowing.setVisibility(View.GONE);
-                    binding.viewAllUpcoming.setVisibility(View.GONE);
-                }
-                else{
                     binding.upcomingShowing.setVisibility(View.VISIBLE);
                     binding.viewAllUpcoming.setVisibility(View.VISIBLE);
                     upcomingAdapter.setMoviesList(movies);
-                }
             }
         });
 
         viewModel.getPopularMoviesList().observe(getViewLifecycleOwner(), new Observer<ArrayList<Movie>>() {
             @Override
             public void onChanged(ArrayList<Movie> movies) {
-                if (movies.size() == 0 || movies == null){
-                    binding.popular.setVisibility(View.GONE);
-                    binding.viewAllPopular.setVisibility(View.GONE);
-                }
-                else{
                     binding.popular.setVisibility(View.VISIBLE);
                     binding.viewAllPopular.setVisibility(View.VISIBLE);
                     popularAdapter.setMoviesList(movies);
-                }
             }
         });
 
         viewModel.getTopRatedMoviesList().observe(getViewLifecycleOwner(), new Observer<ArrayList<Movie>>() {
             @Override
             public void onChanged(ArrayList<Movie> movies) {
-                if (movies.size() == 0 || movies == null){
-                    binding.topRated.setVisibility(View.GONE);
-                    binding.viewAllTopRated.setVisibility(View.GONE);
-                }
-                else{
                     binding.topRated.setVisibility(View.VISIBLE);
                     binding.viewAllTopRated.setVisibility(View.VISIBLE);
                     topRatedAdapter.setMoviesList(movies);
-                }
             }
         });
     }
@@ -134,23 +136,23 @@ public class Home extends Fragment {
     }
 
     private void setUpRecyclerViewsAndViewPager() {
-        currentMoviesAdapter = new ViewPagerAdapter(getContext(),currentMovies);
+        currentMoviesAdapter = new ViewPagerAdapter(getContext(), currentMovies);
         binding.currentlyShowingViewPager.setAdapter(currentMoviesAdapter);
 
-        binding.upcomingRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL,false));
-        upcomingAdapter = new HomeAdapter(getContext(),upcomingMovies);
+        binding.upcomingRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+        upcomingAdapter = new HomeAdapter(getContext(), upcomingMovies);
         binding.upcomingRecyclerView.setAdapter(upcomingAdapter);
 
-        binding.topRatedRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL,false));
-        topRatedAdapter = new HomeAdapter(getContext(),topRatedMovies);
+        binding.topRatedRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+        topRatedAdapter = new HomeAdapter(getContext(), topRatedMovies);
         binding.topRatedRecyclerView.setAdapter(topRatedAdapter);
 
-        binding.popularRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL,false));
-        popularAdapter = new HomeAdapter(getContext(),popularMovies);
+        binding.popularRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+        popularAdapter = new HomeAdapter(getContext(), popularMovies);
         binding.popularRecyclerView.setAdapter(popularAdapter);
     }
 
-    private void setUpOnclick(){
+    private void setUpOnclick() {
         binding.viewAllCurrent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
