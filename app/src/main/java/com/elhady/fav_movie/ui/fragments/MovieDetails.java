@@ -95,7 +95,7 @@ public class MovieDetails extends Fragment {
             public void onClick(View view) {
                 if(inFavList){
                     viewModel.deleteMovie(movieId);
-                    binding.addToFavoriteList.setImageResource(R.drawable.ic_play);
+                    binding.addToFavoriteList.setImageResource(R.drawable.ic_playlist);
                     Toast.makeText(getContext(),"Removed from Favorite List.",Toast.LENGTH_SHORT).show();
                 }
                 else {
@@ -103,7 +103,7 @@ public class MovieDetails extends Fragment {
                             mMovie.getRelease_date(),mMovie.getTitle(),mMovie.getBackdrop_path(),mMovie.getVote_count(),
                             mMovie.getRuntime());
                     viewModel.insertMovie(movie);
-                    binding.addToFavoriteList.setImageResource(R.drawable.ic_play);
+                    binding.addToFavoriteList.setImageResource(R.drawable.ic_playlist_add);
                     Toast.makeText(getContext(),"Added to Favorite List.",Toast.LENGTH_SHORT).show();
                 }
             }
@@ -125,11 +125,11 @@ public class MovieDetails extends Fragment {
 
     private void isMovieInFavList(int movieId) {
         if(viewModel.getFavoriteListMovie(movieId) != null) {
-            binding.addToFavoriteList.setImageResource(R.drawable.ic_playlist);
+            binding.addToFavoriteList.setImageResource(R.drawable.ic_playlist_add);
             inFavList = true;
         }
         else {
-            binding.addToFavoriteList.setImageResource(R.drawable.ic_playlist_add);
+            binding.addToFavoriteList.setImageResource(R.drawable.ic_playlist);
             inFavList = false;
         }
         binding.addToFavoriteList.setVisibility(View.VISIBLE);

@@ -3,6 +3,7 @@ package com.elhady.fav_movie.ui;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.WindowManager;
 
 import com.elhady.fav_movie.R;
 
@@ -23,6 +24,8 @@ public class MainBottomActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         binding = ActivityBottomMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         navController = Navigation.findNavController(MainBottomActivity.this,R.id.fragment);

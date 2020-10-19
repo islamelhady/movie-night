@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,7 +63,7 @@ public class Movies extends Fragment {
     }
 
     private void initRecyclerView() {
-        binding.moviesRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),3));
+        binding.moviesRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL));
         adapter = new CategoryMoviesAdapter(getContext(),moviesList);
         binding.moviesRecyclerView.setAdapter(adapter);
     }
@@ -107,15 +109,19 @@ public class Movies extends Fragment {
         switch (moviesCategory){
             case Constants.Current:
                 viewModel.getCurrentlyShowingMovies(map);
+                binding.moviesCategoryTitle.setText(Constants.Current);
                 break;
             case Constants.Upcoming:
                 viewModel.getUpcomingMovies(map);
+                binding.moviesCategoryTitle.setText(Constants.Upcoming);
                 break;
             case Constants.TopRated:
                 viewModel.getTopRatedMovies(map);
+                binding.moviesCategoryTitle.setText(Constants.TopRated);
                 break;
             case Constants.Popular:
                 viewModel.getPopularMovies(map);
+                binding.moviesCategoryTitle.setText(Constants.Popular);
                 break;
         }
     }
