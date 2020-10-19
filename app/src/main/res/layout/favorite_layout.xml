@@ -61,7 +61,7 @@
             android:backgroundTint="@color/colorPrimary"
             android:foregroundGravity="center"
             android:src="@drawable/ic_delete"
-            app:tint="@color/red"
+            app:tint="@color/white"
             app:borderWidth="0dp" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.elhady.fav_movie"
+        applicationId 'com.elhady.movie_night'
         minSdkVersion 19
         targetSdkVersion 30
         versionCode 1

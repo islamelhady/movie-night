@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/home2"
-        android:name="com.elhady.fav_movie.ui.fragments.Home"
+        android:name="com.elhady.movie_night.ui.fragments.Home"
         android:label="Home">
         <action
             android:id="@+id/action_home2_to_movies"
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/favorite"
-        android:name="com.elhady.fav_movie.ui.fragments.Favorite"
+        android:name="com.elhady.movie_night.ui.fragments.Favorite"
         android:label="Favorite" >
         <action
             android:id="@+id/action_favorite_to_movieDetails"
@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchMovies"
-        android:name="com.elhady.fav_movie.ui.fragments.SearchMovies"
+        android:name="com.elhady.movie_night.ui.fragments.SearchMovies"
         android:label="SearchMovies" >
         <action
             android:id="@+id/action_searchMovies_to_movieDetails"
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/movies"
-        android:name="com.elhady.fav_movie.ui.fragments.Movies"
+        android:name="com.elhady.movie_night.ui.fragments.Movies"
         android:label="Movies">
         <argument
             android:name="movieCategory"
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/movieDetails"
-        android:name="com.elhady.fav_movie.ui.fragments.MovieDetails"
+        android:name="com.elhady.movie_night.ui.fragments.MovieDetails"
         android:label="MovieDetails"
         app:exitAnim="@android:anim/slide_out_right">
         <argument
@@ -58,7 +58,7 @@
     </fragment>
     <fragment
         android:id="@+id/actorDetails"
-        android:name="com.elhady.fav_movie.ui.fragments.ActorDetails"
+        android:name="com.elhady.movie_night.ui.fragments.ActorDetails"
         android:label="ActorDetails">
         <action
             android:id="@+id/action_actorDetails_to_movieDetails"

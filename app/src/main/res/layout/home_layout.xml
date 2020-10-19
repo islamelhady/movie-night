@@ -6,11 +6,21 @@
         android:layout_height="match_parent"
         android:background="@color/colorBackGround">
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_centerInParent="true"
+            android:visibility="visible" />
+
+
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -19,21 +29,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:layout_margin="10dp"
+                    android:layout_margin="20dp"
                     android:text="Currently Showing"
                     android:textColor="#fff"
                     android:textSize="22sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:visibility="gone"/>
 
-                <TextView
+                <ImageView
                     android:id="@+id/viewAllCurrent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginRight="15dp"
-                    android:text="View All"
-                    android:textColor="@color/colorPrimary" />
+                    android:src="@drawable/ic_arrow_view_all"
+                    android:visibility="gone"/>
+
 
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/currentlyShowingViewPager"
@@ -52,9 +64,10 @@
                     android:text="Upcoming movies "
                     android:textColor="#fff"
                     android:textSize="22sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:visibility="gone"/>
 
-                <TextView
+                <ImageView
                     android:id="@+id/viewAllUpcoming"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -62,8 +75,8 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="15dp"
                     android:layout_marginRight="15dp"
-                    android:text="View All"
-                    android:textColor="@color/colorPrimary" />
+                    android:src="@drawable/ic_arrow_view_all"
+                    android:visibility="gone"/>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/upcomingRecyclerView"
@@ -81,9 +94,10 @@
                     android:text="Popular movies "
                     android:textColor="#fff"
                     android:textSize="22sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:visibility="gone"/>
 
-                <TextView
+                <ImageView
                     android:id="@+id/viewAllPopular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -91,8 +105,8 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="15dp"
                     android:layout_marginRight="15dp"
-                    android:text="View All"
-                    android:textColor="@color/colorPrimary"/>
+                    android:src="@drawable/ic_arrow_view_all"
+                    android:visibility="gone"/>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/popularRecyclerView"
@@ -110,9 +124,10 @@
                     android:text="Top-rated movies"
                     android:textColor="#fff"
                     android:textSize="22sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:visibility="gone"/>
 
-                <TextView
+                <ImageView
                     android:id="@+id/viewAllTopRated"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -120,8 +135,8 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="15dp"
                     android:layout_marginRight="15dp"
-                    android:text="View All"
-                    android:textColor="@color/colorPrimary" />
+                    android:src="@drawable/ic_arrow_view_all"
+                    android:visibility="gone"/>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/topRatedRecyclerView"
