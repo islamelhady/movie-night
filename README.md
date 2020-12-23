@@ -13,6 +13,15 @@ Android Movie App for displaying all popular movies, search any movie, find info
 * RecyclerView
 * CardView
 
+# Screen Shots
+
+## screen1 <img src="screenshots/image1.png" width="300" >  secreen2 <img src="screenshots/image2.png" width="300" >
+
+## screen3 <img src="screenshots/image3.png" width="300" >  screen4 <img src="screenshots/image4.png" width="300" >
+
+## screen5 <img src="screenshots/image5.png" width="300" >  screen6 <img src="screenshots/image6.png" width="300" >
+
+
 ## Authors
 
 * **Islam Elhady** - *LinkedIn* - [Islam Elhady](https://www.linkedin.com/in/islamelhady)
