@@ -6,11 +6,11 @@
 
 
 ## ✨ Screenshots
-| Main Screen | Actor |  Favorites |
+| Main Screen | Favorites |  Search |
 |:-:|:-:|:-:|
-| ![Fist](screenshots/image1.png?raw=true) | ![3](screenshots/image6.png?raw=true) | ![3](screenshots/image2.png?raw=true) |
-| Movie Details | Trailers |  Search |
-| ![4](screenshots/image4.png?raw=true) | ![5](screenshots/image5.png?raw=true) | ![6](screenshots/image3.png?raw=true) |
+| ![Fist](screenshots/image1.png?raw=true) | ![3](screenshots/image2.png?raw=true) | ![3](screenshots/image3.png?raw=true) |
+| Movie Details | Trailers |  Actor |
+| ![4](screenshots/image4.png?raw=true) | ![5](screenshots/image5.png?raw=true) | ![6](screenshots/image6.png?raw=true) |
 
 ## 🌟 Features
 *   Discover the most popular and the most rated movies
