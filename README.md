@@ -24,6 +24,27 @@
 *   ConstraintLayout(guidelines, barriers... etc)
 *   Material design.
 
+### App Architecture 
+Based on mvvm architecture and repository pattern.
+
+<img src="screenshots/mvvm.png" width="500" style="max-width:500%;">
+
+#### The app includes the following main components:
+
+* A local database that servers as a single source of truth for data presented to the user. 
+* A web api service.
+* A repository that works with the database and the api service, providing a unified data interface.
+* A ViewModel that provides data specific for the UI.
+* The UI, which shows a visual representation of the data in the ViewModel.
+
+#### App Packages
+* <b>network</b> - contains the api classes to make api calls to MovieDB server, using Retrofit. 
+* <b>db</b> - contains the db classes to cache network data.
+* <b>repository</b> - contains the repository classes, responsible for triggering api requests and saving the response in the database.
+* <b>di</b> - contains dependency injection classes, using Dagger2.   
+* <b>ui</b> - contains classes needed to display Activity and Fragment.
+* <b>util</b> - contains classes needed for activity/fragment redirection.
+
 ## 🚀 Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
@@ -57,16 +78,18 @@ API_KEY="Your API Key here"
 5.  Create new Pull Request
 
 ## 📃 Libraries used
+*   Minimum SDK 19
 *   [AndroidX](https://developer.android.com/jetpack/androidx/) - Previously known as 'Android support Library'
 *   [Glide](https://github.com/bumptech/glide) - for loading and caching images 
-*   [Retrofit 2](https://github.com/square/retrofit) - Type-safe HTTP client for Android and Java by Square, Inc. 
+*   [Retrofit 2](https://github.com/square/retrofit) - for API integration. 
+*   [RxJava2](https://github.com/ReactiveX/RxJava) for implementing Observable pattern.
+*   [Dagger 2](https://google.github.io/dagger/) for dependency injection.
 *   [Gson](https://github.com/google/gson) - for serialization/deserialization Java Objects into JSON and back
+*   [OkHttp](https://github.com/square/okhttp) - for implementing interceptor, logging and mocking web server.
 *   [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
 *   [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
 *   [DataBinding](https://developer.android.com/topic/libraries/data-binding/)
-*   [OkHttp](https://github.com/square/okhttp)
 *   [CircleImageView](https://github.com/hdodenhof/CircleImageView)
-*   [TextDrawable](https://github.com/amulyakhare/TextDrawable)
 
 
 ## Authors
