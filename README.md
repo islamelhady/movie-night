@@ -1,4 +1,4 @@
-![Screen](mockup.png)
+![Screen](screenshots/mockup.png)
 <h1 align="center">Movie Night</h1>
 <h4 align="center">
 	Discover the most popular and top rated movies playing. Movies data fetched using <a href="https://www.themoviedb.org/">themoviedb.org</a> API.
@@ -6,9 +6,9 @@
 
 
 ## ✨ Screenshots
-| Main Screen | Demo |  Favorites |
+| Main Screen | Actor |  Favorites |
 |:-:|:-:|:-:|
-| ![Fist](screenshots/image1.png?raw=true) | ![3](screenshots/demo_gif.gif?raw=true) | ![3](screenshots/image2.png?raw=true) |
+| ![Fist](screenshots/image1.png?raw=true) | ![3](screenshots/image6.png?raw=true) | ![3](screenshots/image2.png?raw=true) |
 | Movie Details | Trailers |  Search |
 | ![4](screenshots/image4.png?raw=true) | ![5](screenshots/image5.png?raw=true) | ![6](screenshots/image3.png?raw=true) |
 
@@ -18,6 +18,7 @@
 *   Shows a list of reviews for each movie
 *   Users can mark a movie as favorite in the details view by tapping a plus icon 
 *   Advanced uses of Room
+*   Navigation Component
 *   MVVM with Android Architecture Components(Room, LiveData, ViewModel)
 *   Handle network status and network failures
 *   ConstraintLayout(guidelines, barriers... etc)
