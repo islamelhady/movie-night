@@ -1,8 +1,13 @@
-![Screen](screenshots/mockup.png)
+|   | Demo |   |
+|:-:|:-:|:-:|
+| ![Fist](screenshots/Demo.gif?raw=true) | ![3](screenshots/Demo1.gif?raw=true) | ![3](screenshots/Demo2.gif?raw=true) |
+
 <h1 align="center">Movie Night</h1>
 <h4 align="center">
 	Discover the most popular and top rated movies playing. Movies data fetched using <a href="https://www.themoviedb.org/">themoviedb.org</a> API.
 </h4>
+
+
 
 
 ## ✨ Screenshots
