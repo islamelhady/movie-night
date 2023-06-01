@@ -157,7 +157,7 @@ public class Home extends Fragment {
         binding.viewAllCurrent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomeDirections.ActionHome2ToMovies action = HomeDirections.actionHome2ToMovies();
+                HomeDirections.ActionHomeToMovies action = HomeDirections.actionHomeToMovies();
                 action.setMovieCategory(Constants.Current);
                 Navigation.findNavController(v).navigate(action);
             }
@@ -165,7 +165,7 @@ public class Home extends Fragment {
         binding.viewAllUpcoming.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomeDirections.ActionHome2ToMovies action = HomeDirections.actionHome2ToMovies();
+                HomeDirections.ActionHomeToMovies action = HomeDirections.actionHomeToMovies();
                 action.setMovieCategory(Constants.Upcoming);
                 Navigation.findNavController(v).navigate(action);
             }
@@ -173,7 +173,7 @@ public class Home extends Fragment {
         binding.viewAllPopular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomeDirections.ActionHome2ToMovies action = HomeDirections.actionHome2ToMovies();
+                HomeDirections.ActionHomeToMovies action = HomeDirections.actionHomeToMovies();
                 action.setMovieCategory(Constants.Popular);
                 Navigation.findNavController(v).navigate(action);
             }
@@ -181,7 +181,7 @@ public class Home extends Fragment {
         binding.viewAllTopRated.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomeDirections.ActionHome2ToMovies action = HomeDirections.actionHome2ToMovies();
+                HomeDirections.ActionHomeToMovies action = HomeDirections.actionHomeToMovies();
                 action.setMovieCategory(Constants.TopRated);
                 Navigation.findNavController(v).navigate(action);
             }

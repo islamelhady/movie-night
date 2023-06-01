@@ -56,8 +56,8 @@ public class ViewPagerAdapter extends RecyclerView.Adapter<ViewPagerAdapter.View
         holder.binding.currentlyShowingLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                HomeDirections.ActionHome2ToMovieDetails action = HomeDirections
-                        .actionHome2ToMovieDetails(movieList.get(position).getId());
+                HomeDirections.ActionHomeToMovieDetails action = HomeDirections
+                        .actionHomeToMovieDetails(movieList.get(position).getId());
                 Navigation.findNavController(view).navigate(action);
             }
         });

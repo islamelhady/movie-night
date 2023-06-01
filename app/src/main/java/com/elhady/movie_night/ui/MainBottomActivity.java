@@ -36,7 +36,7 @@ public class MainBottomActivity extends AppCompatActivity {
 
                 switch (i){
                     case 0:
-                        navController.navigate(R.id.home2);
+                        navController.navigate(R.id.home);
                         return true;
                     case 1:
                         navController.navigate(R.id.favorite);

@@ -56,8 +56,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
         holder.binding.movieItemRelativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                HomeDirections.ActionHome2ToMovieDetails action = HomeDirections
-                        .actionHome2ToMovieDetails(moviesList.get(position).getId());
+                HomeDirections.ActionHomeToMovieDetails action = HomeDirections
+                        .actionHomeToMovieDetails(moviesList.get(position).getId());
                 Navigation.findNavController(view).navigate(action);
             }
         });

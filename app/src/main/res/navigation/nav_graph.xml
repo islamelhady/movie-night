@@ -2,18 +2,18 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/home2">
+    app:startDestination="@id/home">
 
     <fragment
-        android:id="@+id/home2"
+        android:id="@+id/home"
         android:name="com.elhady.movie_night.ui.fragments.Home"
         android:label="Home">
         <action
-            android:id="@+id/action_home2_to_movies"
+            android:id="@+id/action_home_to_movies"
             app:destination="@id/movies"
             app:exitAnim="@anim/fragment_fade_exit"/>
         <action
-            android:id="@+id/action_home2_to_movieDetails"
+            android:id="@+id/action_home_to_movieDetails"
             app:destination="@id/movieDetails" />
     </fragment>
     <fragment
