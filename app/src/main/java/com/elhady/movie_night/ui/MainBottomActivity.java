@@ -5,6 +5,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.WindowManager;
 
+import com.elhady.movie_night.BuildConfig;
 import com.elhady.movie_night.R;
 
 import com.elhady.movie_night.databinding.ActivityBottomMainBinding;

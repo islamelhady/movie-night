@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 
+import com.elhady.movie_night.BuildConfig;
 import com.elhady.movie_night.Utils.Constants;
 import com.elhady.movie_night.adapter.SearchAdapter;
 import com.elhady.movie_night.databinding.SearchMoviesLayoutBinding;
@@ -51,7 +52,7 @@ public class SearchMovies extends Fragment {
 
         queryMap = new HashMap<>();
 
-        queryMap.put("api_key", Constants.API_KEY);
+        queryMap.put("api_key", BuildConfig.API_KEY);
         queryMap.put("query",queryText);
 
         initRecyclerView();
@@ -64,7 +65,7 @@ public class SearchMovies extends Fragment {
 
                 queryText = binding.searchKeyword.getText().toString().trim().toLowerCase();
                 queryMap.clear();
-                queryMap.put("api_key", Constants.API_KEY);
+                queryMap.put("api_key", BuildConfig.API_KEY);
                 queryMap.put("query",queryText);
 
                 viewModel.getQueriedMovies(queryMap);
@@ -76,7 +77,7 @@ public class SearchMovies extends Fragment {
                 if(actionId == EditorInfo.IME_ACTION_SEARCH){
                     queryText = binding.searchKeyword.getText().toString().trim().toLowerCase();
                     queryMap.clear();
-                    queryMap.put("api_key", Constants.API_KEY);
+                    queryMap.put("api_key", BuildConfig.API_KEY);
                     queryMap.put("query",queryText);
 
                     viewModel.getQueriedMovies(queryMap);

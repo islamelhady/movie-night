@@ -21,6 +21,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.elhady.movie_night.BuildConfig;
 import com.elhady.movie_night.R;
 import com.elhady.movie_night.Utils.Constants;
 import com.elhady.movie_night.adapter.CastAdapter;
@@ -78,7 +79,7 @@ public class MovieDetails extends Fragment {
         movieId = args.getMovieId();
 
         observeData();
-        queryMap.put("api_key", Constants.API_KEY);
+        queryMap.put("api_key", BuildConfig.API_KEY);
         queryMap.put("page","1");
         queryMap.put("append_to_response","videos");
 

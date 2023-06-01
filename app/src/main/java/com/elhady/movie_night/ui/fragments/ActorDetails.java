@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
+import com.elhady.movie_night.BuildConfig;
 import com.elhady.movie_night.Utils.Constants;
 import com.elhady.movie_night.adapter.KnownForMoviesAdapter;
 import com.elhady.movie_night.databinding.ActorDetailsLayoutBinding;
@@ -62,7 +63,7 @@ public class ActorDetails extends Fragment {
         personID = args.getPersonId();
 
         queries = new HashMap<>();
-        queries.put("api_key", Constants.API_KEY);
+        queries.put("api_key", BuildConfig.API_KEY);
         queries.put("append_to_response", "movie_credits");
 
         viewModel.getActorDetails(personID, queries);

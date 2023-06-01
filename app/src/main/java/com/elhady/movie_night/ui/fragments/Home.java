@@ -17,6 +17,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.elhady.movie_night.BuildConfig;
 import com.elhady.movie_night.Utils.Constants;
 import com.elhady.movie_night.adapter.HomeAdapter;
 import com.elhady.movie_night.adapter.ViewPagerAdapter;
@@ -62,7 +63,7 @@ public class Home extends Fragment {
 
 
 
-        map.put("api_key", Constants.API_KEY);
+        map.put("api_key", BuildConfig.API_KEY);
         map.put("page", "1");
         binding.progressBar.setVisibility(View.VISIBLE);
         observeData();

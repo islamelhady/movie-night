@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 public class Constants {
 
-    public static final String API_KEY = "282157b63b2a2ef81abaca304a648cba";
+//    public static final String API_KEY = "282157b63b2a2ef81abaca304a648cba";
     public static final String BaseURL = "https://api.themoviedb.org/3/";
     public static final String ImageBaseURL = "https://image.tmdb.org/t/p/original";
     public static final String ImageBaseURLw780 = "https://image.tmdb.org/t/p/w780";
